@@ -130,6 +130,7 @@
     <Compile Include="Controllers\AdminLayoutController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstructorController.cs" />
     <Compile Include="DAL\Context\ELearningContext.cs" />
     <Compile Include="DAL\Entities\Category.cs" />
     <Compile Include="DAL\Entities\Instructor.cs" />
@@ -140,6 +141,10 @@
     <Compile Include="Migrations\202309081608534_mig_add_testinonial_table.cs" />
     <Compile Include="Migrations\202309081608534_mig_add_testinonial_table.designer.cs">
       <DependentUpon>202309081608534_mig_add_testinonial_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309122004598_mig_update_instructor_table.cs" />
+    <Compile Include="Migrations\202309122004598_mig_update_instructor_table.designer.cs">
+      <DependentUpon>202309122004598_mig_update_instructor_table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -814,10 +819,17 @@
     <Content Include="Templates\material-lite-master\scss\style.scss" />
     <Content Include="Templates\material-lite-master\scss\variable.scss" />
     <Content Include="Templates\material-lite-master\scss\widgets.scss" />
+    <Content Include="Views\AdminLayout\_FooterPartial.cshtml" />
+    <Content Include="Views\AdminLayout\_PageRowTitlePartial.cshtml" />
+    <Content Include="Views\AdminLayout\_PreloaderPartial.cshtml" />
+    <Content Include="Views\Category\AddCategory.cshtml" />
+    <Content Include="Views\Category\UpdateCategory.cshtml" />
+    <Content Include="Views\Instructor\Index.cshtml" />
+    <Content Include="Views\Instructor\AddInstructor.cshtml" />
+    <Content Include="Views\Instructor\UpdateInstructor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Fonts\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -850,6 +862,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202309081608534_mig_add_testinonial_table.resx">
       <DependentUpon>202309081608534_mig_add_testinonial_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309122004598_mig_update_instructor_table.resx">
+      <DependentUpon>202309122004598_mig_update_instructor_table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

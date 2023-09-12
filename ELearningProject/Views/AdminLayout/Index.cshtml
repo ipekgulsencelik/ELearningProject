@@ -10,11 +10,7 @@
 
 <body class="fix-header fix-sidebar card-no-border">
 
-    <div class="preloader">
-        <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-        </svg>
-    </div>
+    @Html.Action("_PreloaderPartial", "AdminLayout")
 
     <div id="main-wrapper">
 
@@ -26,41 +22,20 @@
 
             <div class="container-fluid">
 
-                <div class="row page-titles">
-                    <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-                    </div>
-                    <div class="col-md-7 col-4 align-self-center">
-                        <a href="https://themewagon.com/themes/material-bootstrap-4-free-admin-template/" class="btn waves-effect waves-light btn-danger pull-right hidden-sm-down">Download Now</a>
-                    </div>
-                </div>
+                @Html.Action("_PageRowTitlePartial", "AdminLayout")
 
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-block">
-                                This is some text within a card block.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @RenderBody()
+
             </div>
 
-            <footer class="footer">
-                © @DateTime.Now.Year Material Pro Admin by wrappixel.com
-            </footer>
+            @Html.Action("_FooterPartial", "AdminLayout")
 
         </div>
 
     </div>
 
     @Html.Action("_ScriptPartial", "Adminlayout")
+
 </body>
 
 </html>
-
-@RenderBody()
