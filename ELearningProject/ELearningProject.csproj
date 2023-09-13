@@ -169,6 +169,18 @@
     <Compile Include="Migrations\202309122224015_mig_add_tables.designer.cs">
       <DependentUpon>202309122224015_mig_add_tables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309130951461_mig_update_about.cs" />
+    <Compile Include="Migrations\202309130951461_mig_update_about.designer.cs">
+      <DependentUpon>202309130951461_mig_update_about.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309130958548_mig_update_contact.cs" />
+    <Compile Include="Migrations\202309130958548_mig_update_contact.designer.cs">
+      <DependentUpon>202309130958548_mig_update_contact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309131007085_mig_update_message.cs" />
+    <Compile Include="Migrations\202309131007085_mig_update_message.designer.cs">
+      <DependentUpon>202309131007085_mig_update_message.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1035,6 +1047,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309122224015_mig_add_tables.resx">
       <DependentUpon>202309122224015_mig_add_tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309130951461_mig_update_about.resx">
+      <DependentUpon>202309130951461_mig_update_about.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309130958548_mig_update_contact.resx">
+      <DependentUpon>202309130958548_mig_update_contact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309131007085_mig_update_message.resx">
+      <DependentUpon>202309131007085_mig_update_message.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

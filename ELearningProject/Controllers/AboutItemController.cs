@@ -1,17 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ELearningProject.DAL.Context;
+using ELearningProject.DAL.Entities;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ELearningProject.Controllers
 {
     public class AboutItemController : Controller
     {
-        // GET: AboutItem
+        ELearningContext context = new ELearningContext();
+
         public ActionResult Index()
         {
+            var values = context.AboutItems.ToList();
+            return View(values);
+        }
+
+        [HttpGet]
+        public ActionResult AddAboutItem()
+        {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddAboutItem(AboutItem item)
+        {
+            context.AboutItems.Add(item);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteAboutItem(int id)
+        {
+            var value = context.AboutItems.Find(id);
+            context.AboutItems.Remove(value);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult UpdateAboutItem(int id)
+        {
+            var value = context.AboutItems.Find(id);
+            return View(value);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateAboutItem(AboutItem item)
+        {
+            var value = context.AboutItems.Find(item.AboutItemID);
+            value.ItemName = item.ItemName;
+            value.Status = item.Status;
+            context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
