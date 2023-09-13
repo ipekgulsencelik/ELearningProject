@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
 }
 
 <div class="row">
@@ -23,13 +24,17 @@
                     </tr>
                     @foreach (var item in Model)
                     {
+                        count++;
                         <tr>
-                            <td>@item.InstructorID</td>
-                            <td><img src="@item.ImageURL" style="height:50px; width:50px; border-radius:50%" /></td>
+                            <td>@count</td>
+                            <td><img src="~/Images/@item.ImageURL" style="height:50px; width:50px; border-radius:50%" /></td>
                             <td>@item.Name @item.Surname</td>
                             <td><a href="/Instructor/#/@item.InstructorID" class="btn btn-outline-warning">Kurslar</a></td>
                             <td><a href="/Instructor/#/@item.InstructorID" class="btn btn-outline-info">İçerikleri Gör</a></td>
-                            <td><a href="/Instructor/DeleteInstructor/@item.InstructorID" class="btn btn-outline-danger">Sil</a></td>
+                            <td>
+                                <a href="/Instructor/DeleteInstructor/@item.InstructorID" class="btn btn-outline-danger" id="DeleteBtn"
+                                   onclick="return confirm('Silmek istediğinize emin misiniz?');"> Sil</a>
+                            </td>
                             <td><a href="/Instructor/UpdateInstructor/@item.InstructorID" class="btn btn-outline-success">Güncelle</a></td>
                         </tr>
                     }

@@ -1,4 +1,4 @@
-﻿@model List<ELearningProject.DAL.Entities.Testimonial>
+﻿﻿@model List<ELearningProject.DAL.Entities.Service>
 
 @{
     ViewBag.Title = "Index";
@@ -10,15 +10,14 @@
     <div class="col-12">
         <div class="card">
             <div class="card-block">
-                <h3>Referans Listesi</h3>
+                <h3>Hizmet Listesi</h3>
                 <br />
                 <table class="table table-bordered">
                     <tr>
                         <th>#</th>
-                        <th>Görsel</th>
-                        <th>Referans Adı-Soyadı</th>
+                        <th>Ikon</th>
                         <th>Başlık</th>
-                        <th>Yorum</th>
+                        <th>Açıklama</th>
                         <th>Durum</th>
                         <th>Sil</th>
                         <th>Güncelle</th>
@@ -28,21 +27,19 @@
                         count++;
                         <tr>
                             <td>@count</td>
-                            <td><img src="~/Images/@item.ImageURL" style="height:50px; width:50px; border-radius:50%" /></td>
-                            <td>@item.NameSurname</td>
+                            <td><i class="@item.Icon"></i></td>
                             <td>@item.Title</td>
-                            @*<td>@item.Comment</td>*@
-                            @if (@item.Comment == null ||
-                                @item.Comment.Length <= 10)
+                            @if (@item.Description == null ||
+                                @item.Description.Length <= 30)
                             {
-                                <td>@item.Comment</td>
+                                <td>@item.Description</td>
                             }
                             else
                             {
                                 <td>
                                     <a href="#" id="DescriptionBtn"
-                                       onclick="return confirm('@item.Comment');">
-                                        @item.Comment.Substring(0, 10)...
+                                   onclick="return confirm('@item.Description');">
+                                        @item.Description.Substring(0, 10)...
                                     </a>
                                 </td>
                             }
@@ -57,14 +54,14 @@
                                 }
                             </td>
                             <td>
-                                <a href="/Testimonial/DeleteTestimonial/@item.TestimonialID" class="btn btn-outline-danger" id="DeleteBtn"
+                                <a href="/Service/DeleteService/@item.ServiceID" class="btn btn-outline-danger" id="DeleteBtn"
                                    onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
                             </td>
-                            <td><a href="/Testimonial/UpdateTestimonial/@item.TestimonialID" class="btn btn-outline-success">Güncelle</a></td>
+                            <td><a href="/Service/UpdateService/@item.ServiceID" class="btn btn-outline-success">Güncelle</a></td>
                         </tr>
                     }
                 </table>
-                <a href="/Testimonial/AddTestimonial/" class="btn btn-outline-primary">Yeni Referans Girişi</a>
+                <a href="/Service/AddService/" class="btn btn-outline-primary">Yeni Hizmet Girişi</a>
             </div>
         </div>
     </div>

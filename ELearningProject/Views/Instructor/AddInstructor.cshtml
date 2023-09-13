@@ -7,7 +7,7 @@
 
 
 <h3>Yeni Eğitmen Bilgileri</h3>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <br />
     <label>Eğitmen Adı</label>
     <input type="text" name="Name" class="form-control" />
@@ -18,7 +18,7 @@
     <br />
     <br />
     <label>Eğitmen Görseli</label>
-    <input type="text" name="ImageUrl" class="form-control" />
+    <input type="file" name="image" class="form-control"/>
     <br />
     <br />
     <button class="btn btn-primary">Eğitmeni Kaydet</button>

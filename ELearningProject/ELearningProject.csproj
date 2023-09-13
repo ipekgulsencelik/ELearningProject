@@ -996,17 +996,19 @@
     <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_variables.scss" />
     <Content Include="Views\Testimonial\Index.cshtml" />
     <Content Include="Views\Testimonial\AddTestimonial.cshtml" />
+    <Content Include="Views\Service\Index.cshtml" />
+    <Content Include="Views\Service\AddService.cshtml" />
+    <Content Include="Views\Subscribe\Index.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Map\Index.cshtml" />
+    <Content Include="Views\ContactInfo\Index.cshtml" />
+    <Content Include="Views\AboutItem\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\AboutItem\" />
-    <Folder Include="Views\About\" />
-    <Folder Include="Views\ContactInfo\" />
-    <Folder Include="Views\Map\" />
-    <Folder Include="Views\Message\" />
-    <Folder Include="Views\Service\" />
-    <Folder Include="Views\Subscribe\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

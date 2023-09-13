@@ -25,9 +25,26 @@
     <input type="text" name="ImageURL" class="form-control" />
     <br />
     <br />
-    <input type="checkbox" name="Status" value="true" class="custom-control-input">
+    <input type="checkbox" name="Status" value="true" class="custom-control-input" id="#status">
     <label>Durum</label>
     <br />
     <br />
     <button class="btn btn-primary">Referansı Kaydet</button>
 </form>
+
+<script>
+    var form = document.querySelector('form');
+    var submitting = false;
+
+    form.addEventListener('submit', function (e) {
+        if (submitting === true) {
+            e.preventDefault();
+            return;
+        }
+
+        if (document.querySelector('#status' == false)) {
+            alert("Lütfen Durumu Gözden Geçiriniz");
+        }
+        else submitting = true;
+    })
+</script>

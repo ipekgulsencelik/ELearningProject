@@ -1,0 +1,55 @@
+﻿@model List<ELearningProject.DAL.Entities.ContactInfo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-block">
+                <h3>İletişim Bilgileri Listesi</h3>
+                <br />
+                <table class="table table-bordered">
+                    <tr>
+                        <th>#</th>
+                        <th>Adres</th>
+                        <th>Telefon Numarası</th>
+                        <th>Mail Adresi</th>
+                        <th>Durum</th>
+                        <th>Sil</th>
+                        <th>Güncelle</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.Address</td>
+                            <td>@item.Phone</td>
+                            <td>@item.Email</td>
+                            <td>
+                                @if (item.Status)
+                                {
+                                    <i class="fas fa-check-circle"></i>
+                                }
+                                else
+                                {
+                                    <i class="fas fa-times-circle"></i>
+                                }
+                            </td>
+                            <td>
+                                <a href="/ContactInfo/DeleteContactInfo/@item.ContactInfoID" class="btn btn-outline-danger" id="DeleteBtn"
+                                   onclick="return confirm('Silmek istediğinize emin misiniz?');"> Sil</a>
+                            </td>
+                            <td><a href="/ContactInfo/UpdateContactInfo/@item.ContactInfoID" class="btn btn-outline-success">Güncelle</a></td>
+                        </tr>
+                    }
+                </table>
+                <a href="/ContactInfo/AddContactInfo/" class="btn btn-outline-primary">Yeni İletişim Bilgisi Girişi</a>
+            </div>
+        </div>
+    </div>
+</div>
