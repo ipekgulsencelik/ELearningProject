@@ -127,13 +127,28 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AboutItemController.cs" />
     <Compile Include="Controllers\AdminLayoutController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ContactInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
+    <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\SubscribeController.cs" />
+    <Compile Include="Controllers\TestimonialController.cs" />
     <Compile Include="DAL\Context\ELearningContext.cs" />
+    <Compile Include="DAL\Entities\About.cs" />
+    <Compile Include="DAL\Entities\AboutItem.cs" />
     <Compile Include="DAL\Entities\Category.cs" />
+    <Compile Include="DAL\Entities\ContactInfo.cs" />
     <Compile Include="DAL\Entities\Instructor.cs" />
+    <Compile Include="DAL\Entities\Map.cs" />
+    <Compile Include="DAL\Entities\Message.cs" />
+    <Compile Include="DAL\Entities\Service.cs" />
+    <Compile Include="DAL\Entities\Subscribe.cs" />
     <Compile Include="DAL\Entities\Testimonial.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -145,6 +160,14 @@
     <Compile Include="Migrations\202309122004598_mig_update_instructor_table.cs" />
     <Compile Include="Migrations\202309122004598_mig_update_instructor_table.designer.cs">
       <DependentUpon>202309122004598_mig_update_instructor_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309122127375_mig_add_map_table.cs" />
+    <Compile Include="Migrations\202309122127375_mig_add_map_table.designer.cs">
+      <DependentUpon>202309122127375_mig_add_map_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309122224015_mig_add_tables.cs" />
+    <Compile Include="Migrations\202309122224015_mig_add_tables.designer.cs">
+      <DependentUpon>202309122224015_mig_add_tables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -186,6 +209,55 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Templates\elearning-html-template\404.html" />
+    <Content Include="Templates\elearning-html-template\about.html" />
+    <Content Include="Templates\elearning-html-template\contact.html" />
+    <Content Include="Templates\elearning-html-template\courses.html" />
+    <Content Include="Templates\elearning-html-template\css\bootstrap.min.css" />
+    <Content Include="Templates\elearning-html-template\css\style.css" />
+    <Content Include="Templates\elearning-html-template\elearning-html-template.jpg" />
+    <Content Include="Templates\elearning-html-template\img\about.jpg" />
+    <Content Include="Templates\elearning-html-template\img\carousel-1.jpg" />
+    <Content Include="Templates\elearning-html-template\img\carousel-2.jpg" />
+    <Content Include="Templates\elearning-html-template\img\cat-1.jpg" />
+    <Content Include="Templates\elearning-html-template\img\cat-2.jpg" />
+    <Content Include="Templates\elearning-html-template\img\cat-3.jpg" />
+    <Content Include="Templates\elearning-html-template\img\cat-4.jpg" />
+    <Content Include="Templates\elearning-html-template\img\course-1.jpg" />
+    <Content Include="Templates\elearning-html-template\img\course-2.jpg" />
+    <Content Include="Templates\elearning-html-template\img\course-3.jpg" />
+    <Content Include="Templates\elearning-html-template\img\team-1.jpg" />
+    <Content Include="Templates\elearning-html-template\img\team-2.jpg" />
+    <Content Include="Templates\elearning-html-template\img\team-3.jpg" />
+    <Content Include="Templates\elearning-html-template\img\team-4.jpg" />
+    <Content Include="Templates\elearning-html-template\img\testimonial-1.jpg" />
+    <Content Include="Templates\elearning-html-template\img\testimonial-2.jpg" />
+    <Content Include="Templates\elearning-html-template\img\testimonial-3.jpg" />
+    <Content Include="Templates\elearning-html-template\img\testimonial-4.jpg" />
+    <Content Include="Templates\elearning-html-template\index.html" />
+    <Content Include="Templates\elearning-html-template\js\main.js" />
+    <Content Include="Templates\elearning-html-template\lib\animate\animate.css" />
+    <Content Include="Templates\elearning-html-template\lib\animate\animate.min.css" />
+    <Content Include="Templates\elearning-html-template\lib\easing\easing.js" />
+    <Content Include="Templates\elearning-html-template\lib\easing\easing.min.js" />
+    <Content Include="Templates\elearning-html-template\lib\owlcarousel\assets\ajax-loader.gif" />
+    <Content Include="Templates\elearning-html-template\lib\owlcarousel\assets\owl.carousel.css" />
+    <Content Include="Templates\elearning-html-template\lib\owlcarousel\assets\owl.carousel.min.css" />
+    <Content Include="Templates\elearning-html-template\lib\owlcarousel\assets\owl.theme.default.css" />
+    <Content Include="Templates\elearning-html-template\lib\owlcarousel\assets\owl.theme.default.min.css" />
+    <Content Include="Templates\elearning-html-template\lib\owlcarousel\assets\owl.theme.green.css" />
+    <Content Include="Templates\elearning-html-template\lib\owlcarousel\assets\owl.theme.green.min.css" />
+    <Content Include="Templates\elearning-html-template\lib\owlcarousel\assets\owl.video.play.png" />
+    <Content Include="Templates\elearning-html-template\lib\owlcarousel\owl.carousel.js" />
+    <Content Include="Templates\elearning-html-template\lib\owlcarousel\owl.carousel.min.js" />
+    <Content Include="Templates\elearning-html-template\lib\waypoints\links.php" />
+    <Content Include="Templates\elearning-html-template\lib\waypoints\waypoints.min.js" />
+    <Content Include="Templates\elearning-html-template\lib\wow\wow.js" />
+    <Content Include="Templates\elearning-html-template\lib\wow\wow.min.js" />
+    <Content Include="Templates\elearning-html-template\LICENSE.txt" />
+    <Content Include="Templates\elearning-html-template\READ-ME.txt" />
+    <Content Include="Templates\elearning-html-template\team.html" />
+    <Content Include="Templates\elearning-html-template\testimonial.html" />
     <Content Include="Templates\material-lite-master\.gitattributes" />
     <Content Include="Templates\material-lite-master\assets\images\background\profile-bg.jpg" />
     <Content Include="Templates\material-lite-master\assets\images\big\img1.jpg" />
@@ -827,10 +899,102 @@
     <Content Include="Views\Instructor\Index.cshtml" />
     <Content Include="Views\Instructor\AddInstructor.cshtml" />
     <Content Include="Views\Instructor\UpdateInstructor.cshtml" />
+    <Content Include="Templates\elearning-html-template\lib\owlcarousel\LICENSE" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\bootstrap-grid.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\bootstrap-reboot.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\bootstrap-utilities.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\bootstrap.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\forms\_floating-labels.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\forms\_form-check.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\forms\_form-control.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\forms\_form-range.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\forms\_form-select.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\forms\_form-text.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\forms\_input-group.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\forms\_labels.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\forms\_validation.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\helpers\_clearfix.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\helpers\_colored-links.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\helpers\_position.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\helpers\_ratio.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\helpers\_stretched-link.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\helpers\_text-truncation.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\helpers\_visually-hidden.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_alert.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_border-radius.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_box-shadow.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_breakpoints.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_buttons.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_caret.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_clearfix.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_color-scheme.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_container.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_deprecate.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_forms.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_gradients.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_grid.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_image.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_list-group.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_lists.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_pagination.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_reset-text.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_resize.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_table-variants.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_text-truncate.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_transition.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_utilities.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\mixins\_visually-hidden.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\utilities\_api.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\vendor\_rfs.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_accordion.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_alert.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_badge.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_breadcrumb.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_button-group.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_buttons.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_card.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_carousel.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_close.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_containers.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_dropdown.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_forms.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_functions.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_grid.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_helpers.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_images.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_list-group.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_mixins.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_modal.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_nav.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_navbar.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_offcanvas.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_pagination.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_popover.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_progress.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_reboot.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_root.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_spinners.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_tables.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_toasts.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_tooltip.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_transitions.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_type.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_utilities.scss" />
+    <Content Include="Templates\elearning-html-template\scss\bootstrap\scss\_variables.scss" />
+    <Content Include="Views\Testimonial\Index.cshtml" />
+    <Content Include="Views\Testimonial\AddTestimonial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\AboutItem\" />
+    <Folder Include="Views\About\" />
+    <Folder Include="Views\ContactInfo\" />
+    <Folder Include="Views\Map\" />
+    <Folder Include="Views\Message\" />
+    <Folder Include="Views\Service\" />
+    <Folder Include="Views\Subscribe\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -865,6 +1029,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309122004598_mig_update_instructor_table.resx">
       <DependentUpon>202309122004598_mig_update_instructor_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309122127375_mig_add_map_table.resx">
+      <DependentUpon>202309122127375_mig_add_map_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309122224015_mig_add_tables.resx">
+      <DependentUpon>202309122224015_mig_add_tables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
