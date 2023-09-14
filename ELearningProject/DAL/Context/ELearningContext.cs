@@ -15,5 +15,9 @@ namespace ELearningProject.DAL.Context
         public DbSet<Map> Maps { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Subscribe> Subscribes { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<CourseRegister> CourseRegisters { get; set; }
+
     }
 }

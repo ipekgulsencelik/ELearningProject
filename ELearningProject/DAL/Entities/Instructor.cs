@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ELearningProject.DAL.Entities
 {
@@ -11,5 +12,7 @@ namespace ELearningProject.DAL.Entities
         public string Surname { get; set; }
 
         public string ImageURL { get; set; }
+
+        public List<Course> Courses { get; set; }
     }
 }

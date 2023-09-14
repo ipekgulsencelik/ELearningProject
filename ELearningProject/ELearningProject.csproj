@@ -173,11 +173,13 @@
     <Compile Include="Controllers\AdminLayoutController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactInfoController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
     <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\SubscribeController.cs" />
     <Compile Include="Controllers\TestimonialController.cs" />
     <Compile Include="DAL\Context\ELearningContext.cs" />
@@ -185,10 +187,13 @@
     <Compile Include="DAL\Entities\AboutItem.cs" />
     <Compile Include="DAL\Entities\Category.cs" />
     <Compile Include="DAL\Entities\ContactInfo.cs" />
+    <Compile Include="DAL\Entities\Course.cs" />
+    <Compile Include="DAL\Entities\CourseRegister.cs" />
     <Compile Include="DAL\Entities\Instructor.cs" />
     <Compile Include="DAL\Entities\Map.cs" />
     <Compile Include="DAL\Entities\Message.cs" />
     <Compile Include="DAL\Entities\Service.cs" />
+    <Compile Include="DAL\Entities\Student.cs" />
     <Compile Include="DAL\Entities\Subscribe.cs" />
     <Compile Include="DAL\Entities\Testimonial.cs" />
     <Compile Include="Global.asax.cs">
@@ -221,6 +226,14 @@
     <Compile Include="Migrations\202309131007085_mig_update_message.cs" />
     <Compile Include="Migrations\202309131007085_mig_update_message.designer.cs">
       <DependentUpon>202309131007085_mig_update_message.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309141945560_mig_add_student_table.cs" />
+    <Compile Include="Migrations\202309141945560_mig_add_student_table.designer.cs">
+      <DependentUpon>202309141945560_mig_add_student_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309142013041_mig_add_course_tables.cs" />
+    <Compile Include="Migrations\202309142013041_mig_add_course_tables.designer.cs">
+      <DependentUpon>202309142013041_mig_add_course_tables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MailRequest.cs" />
@@ -1059,6 +1072,10 @@
     <Content Include="Views\ContactInfo\UpdateContactInfo.cshtml" />
     <Content Include="Views\AboutItem\UpdateAboutItem.cshtml" />
     <Content Include="Views\About\UpdateAbout.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Student\AddStudent.cshtml" />
+    <Content Include="Views\Student\UpdateStudent.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1112,6 +1129,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309131007085_mig_update_message.resx">
       <DependentUpon>202309131007085_mig_update_message.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309141945560_mig_add_student_table.resx">
+      <DependentUpon>202309141945560_mig_add_student_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309142013041_mig_add_course_tables.resx">
+      <DependentUpon>202309142013041_mig_add_course_tables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
