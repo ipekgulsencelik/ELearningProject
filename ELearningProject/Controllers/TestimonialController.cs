@@ -1,5 +1,6 @@
 ﻿using ELearningProject.DAL.Context;
 using ELearningProject.DAL.Entities;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -19,8 +20,29 @@ namespace ELearningProject.Controllers
         public ActionResult AddTestimonial() { return View(); }
 
         [HttpPost]
-        public ActionResult AddTestimonial(Testimonial testimonial)
+        public ActionResult AddTestimonial(Testimonial testimonial, System.Web.HttpPostedFileBase image)
         {
+            string uniqueFileName = null;
+
+            if (image != null)
+            {
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                var path = "~/Images/" + uniqueFileName;
+                image.SaveAs(Server.MapPath(path));
+                testimonial.ImageURL = uniqueFileName;
+            }
+
+            if (Request.Form["Status"] != null)
+            {
+                // The "Status" checkbox was checked (true)
+                string status = Request.Form["Status"]; // status will be "True"
+            }
+            else
+            {
+                // The "Status" checkbox was not checked (false)
+                testimonial.Status = false;
+            }
+
             context.Testimonials.Add(testimonial);
             context.SaveChanges();
             return RedirectToAction("Index");

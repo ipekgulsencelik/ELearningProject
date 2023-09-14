@@ -22,6 +22,17 @@ namespace ELearningProject.Controllers
         [HttpPost]
         public ActionResult AddService(Service service)
         {
+            if (Request.Form["Status"] != null)
+            {
+                // The "Status" checkbox was checked (true)
+                string status = Request.Form["Status"]; // status will be "True"
+            }
+            else
+            {
+                // The "Status" checkbox was not checked (false)
+                service.Status = false;
+            }
+
             context.Services.Add(service);
             context.SaveChanges();
             return RedirectToAction("Index");

@@ -19,7 +19,7 @@
                         <th>Referans Adı-Soyadı</th>
                         <th>Başlık</th>
                         <th>Yorum</th>
-                        <th>Durum</th>
+                        <th style="width:20px;">Durum</th>
                         <th>Sil</th>
                         <th>Güncelle</th>
                     </tr>
@@ -31,7 +31,6 @@
                             <td><img src="~/Images/@item.ImageURL" style="height:50px; width:50px; border-radius:50%" /></td>
                             <td>@item.NameSurname</td>
                             <td>@item.Title</td>
-                            @*<td>@item.Comment</td>*@
                             @if (@item.Comment == null ||
                                 @item.Comment.Length <= 10)
                             {
@@ -49,11 +48,11 @@
                             <td>
                                 @if (item.Status)
                                 {
-                                    <i class="fas fa-check-circle"></i>
+                                    <i class="fa fa-check-circle"></i>
                                 }
                                 else
                                 {
-                                    <i class="fas fa-times-circle"></i>
+                                    <i class="fa fa-times-circle"></i>
                                 }
                             </td>
                             <td>

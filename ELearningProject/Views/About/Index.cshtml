@@ -18,8 +18,8 @@
                         <th>Görsel</th>
                         <th>Başlık</th>
                         <th>Açıklama</th>
-                        <th>Alt Açıklama</th>
-                        <th>Durum</th>
+                        <th>Alt-Açıklama</th>
+                        <th style="width:20px;">Durum</th>
                         <th>Sil</th>
                         <th>Güncelle</th>
                     </tr>
@@ -28,22 +28,49 @@
                         count++;
                         <tr>
                             <td>@count</td>
-                            <td><img src="~/Images/@item.ImageURL" style="height:50px; width:50px; border-radius:50%" /></td>
+                            <td><img src="~/Images/@item.ImageURL" style="height:50px; width:50px;" /></td>
                             <td>@item.Title</td>
-                            <td>@item.Description</td>
-                            <td>@item.SubDescription</td>
+                            @if (@item.Description == null || @item.Description.Length <= 30)
+                            {
+                                <td>@item.Description</td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a href="#" id="DescriptionBtn"
+                                       onclick="return confirm('@item.Description');">
+                                        @item.Description.Substring(0, 10)...
+                                    </a>
+                                </td>
+                            }
+                            @if (@item.SubDescription == null ||
+@item.SubDescription.Length <= 30)
+                            {
+                                <td>@item.SubDescription</td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a href="#" id="SubDescriptionBtn"
+                                       onclick="return confirm('@item.SubDescription');">
+                                        @item.SubDescription.Substring(0, 10)...
+                                    </a>
+                                </td>
+                            }
                             <td>
                                 @if (item.Status)
                                 {
-                                    <i class="fas fa-check-circle"></i>
+                                    <i class="fa fa-check-circle"></i>
                                 }
                                 else
                                 {
-                                    <i class="fas fa-times-circle"></i>
+                                    <i class="fa fa-times-circle"></i>
                                 }
                             </td>
-                            <td><a href="/About/DeleteAbout/@item.AboutID" class="btn btn-outline-danger" id="DeleteBtn"
-                                   onclick="return confirm('Silmek istediğinize emin misiniz?');"> Sil</a></td>
+                            <td>
+                                <a href="/About/DeleteAbout/@item.AboutID" class="btn btn-outline-danger" id="DeleteBtn"
+                                   onclick="return confirm('Silmek istediğinize emin misiniz?');"> Sil</a>
+                            </td>
                             <td><a href="/About/UpdateAbout/@item.AboutID" class="btn btn-outline-success">Güncelle</a></td>
                         </tr>
                     }

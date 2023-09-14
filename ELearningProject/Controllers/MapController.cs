@@ -24,6 +24,17 @@ namespace ELearningProject.Controllers
         [HttpPost]
         public ActionResult AddMap(Map map)
         {
+            if (Request.Form["Status"] != null)
+            {
+                // The "Status" checkbox was checked (true)
+                string status = Request.Form["Status"]; // status will be "True"
+            }
+            else
+            {
+                // The "Status" checkbox was not checked (false)
+                map.Status = false;
+            }
+
             context.Maps.Add(map);
             context.SaveChanges();
             return RedirectToAction("Index");

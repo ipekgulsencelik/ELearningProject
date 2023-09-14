@@ -1004,6 +1004,9 @@
     <Content Include="Views\ContactInfo\Index.cshtml" />
     <Content Include="Views\AboutItem\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\AboutItem\AddAboutItem.cshtml" />
+    <Content Include="Views\Map\AddMap.cshtml" />
+    <Content Include="Views\About\AddAbout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

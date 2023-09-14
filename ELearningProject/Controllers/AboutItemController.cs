@@ -24,6 +24,17 @@ namespace ELearningProject.Controllers
         [HttpPost]
         public ActionResult AddAboutItem(AboutItem item)
         {
+            if (Request.Form["Status"] != null)
+            {
+                // The "Status" checkbox was checked (true)
+                string status = Request.Form["Status"]; // status will be "True"
+            }
+            else
+            {
+                // The "Status" checkbox was not checked (false)
+                item.Status = false;
+            }
+
             context.AboutItems.Add(item);
             context.SaveChanges();
             return RedirectToAction("Index");

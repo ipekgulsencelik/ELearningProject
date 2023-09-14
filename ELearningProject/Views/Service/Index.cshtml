@@ -15,7 +15,6 @@
                 <table class="table table-bordered">
                     <tr>
                         <th>#</th>
-                        <th>Ikon</th>
                         <th>Başlık</th>
                         <th>Açıklama</th>
                         <th>Durum</th>
@@ -27,7 +26,6 @@
                         count++;
                         <tr>
                             <td>@count</td>
-                            <td><i class="@item.Icon"></i></td>
                             <td>@item.Title</td>
                             @if (@item.Description == null ||
                                 @item.Description.Length <= 30)
@@ -46,11 +44,11 @@
                             <td>
                                 @if (item.Status)
                                 {
-                                    <i class="fas fa-check-circle"></i>
+                                    <i class="fa fa-check-circle"></i>
                                 }
                                 else
                                 {
-                                    <i class="fas fa-times-circle"></i>
+                                    <i class="fa fa-times-circle"></i>
                                 }
                             </td>
                             <td>

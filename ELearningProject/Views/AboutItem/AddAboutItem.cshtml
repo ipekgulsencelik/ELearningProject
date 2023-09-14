@@ -1,24 +1,15 @@
-﻿@model ELearningProject.DAL.Entities.Service
+﻿@model ELearningProject.DAL.Entities.AboutItem
 
 @{
-    ViewBag.Title = "AddInstructor";
+    ViewBag.Title = "AddAboutItem";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
-
 
 <h3>Yeni Hizmet Bilgileri</h3>
 <form method="post">
     <br />
-    <label>Hizmet İkonu</label>
-    <input type="text" name="Icon" class="form-control" />
-    <br />
-    <br />
-    <label>Hizmet Başlığı</label>
-    <input type="text" name="Title" class="form-control" />
-    <br />
-    <br />
-    <label>Hizmet Açıklama</label>
-    <textarea name="Description" class="form-control"></textarea>
+    <label>Hizmet Adı</label>
+    <input type="text" name="ItemName" class="form-control" />
     <br />
     <br />
     <div class="form-check">
