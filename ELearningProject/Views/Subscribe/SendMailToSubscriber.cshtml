@@ -1,0 +1,31 @@
+﻿@model ELearningProject.Models.MailRequest
+
+@{
+    ViewBag.Title = "SendMailToSubscriber";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<h3>Abone Bülteni Gönder</h3>
+<br />
+<form method="post">
+    <label>Alıcı Adı-Soyadı</label>
+    <input type="text" class="form-control" asp-for="ReceiverName" value="@ViewBag.name" />
+    <br />
+    <br />
+    <label>Alıcı Mail</label>
+    <input type="email" class="form-control" asp-for="ReceiverMail" value="@ViewBag.mail" />
+    <br />
+    <br />
+    <label>Konu </label>
+    <input type="text" class="form-control" asp-for="Subject" value="@ViewBag.subject" />
+    <br />
+    <br />
+    <textarea class="form-control" asp-for="Body" rows="10" placeholder="Mailinizi Bu Alana Yazın..."></textarea>
+    <br />
+    <br />
+    <button class="btn btn-dark" onclick="showSweetAlertAndRedirect()"> <i class='bx bx-mail-send'></i> Gönder</button>
+</form>

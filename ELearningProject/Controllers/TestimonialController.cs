@@ -64,9 +64,20 @@ namespace ELearningProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateTestimonial(Testimonial testimonial)
+        public ActionResult UpdateTestimonial(Testimonial testimonial, System.Web.HttpPostedFileBase image)
         {
             var value = context.Testimonials.Find(testimonial.TestimonialID);
+
+            string uniqueFileName = null;
+
+            if (image != null)
+            {
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                var path = "~/Images/" + uniqueFileName;
+                image.SaveAs(Server.MapPath(path));
+                testimonial.ImageURL = uniqueFileName;
+            }
+
             value.NameSurname = testimonial.NameSurname;
             value.Title = testimonial.Title;
             value.ImageURL = testimonial.ImageURL;

@@ -24,6 +24,17 @@ namespace ELearningProject.Controllers
         [HttpPost]
         public ActionResult AddContactInfo(ContactInfo contact)
         {
+            if (Request.Form["Status"] != null)
+            {
+                // The "Status" checkbox was checked (true)
+                string status = Request.Form["Status"]; // status will be "True"
+            }
+            else
+            {
+                // The "Status" checkbox was not checked (false)
+                contact.Status = false;
+            }
+
             context.ContactInfos.Add(contact);
             context.SaveChanges();
             return RedirectToAction("Index");

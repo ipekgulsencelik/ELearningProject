@@ -1,9 +1,7 @@
 ﻿using ELearningProject.DAL.Context;
 using ELearningProject.DAL.Entities;
 using System;
-using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace eLearningProject.Controllers
@@ -22,8 +20,7 @@ namespace eLearningProject.Controllers
         public ActionResult AddInstructor() { return View(); }
 
         [HttpPost]
-        public ActionResult AddInstructor(Instructor instructor, System.Web.HttpPostedFileBase image
-            )
+        public ActionResult AddInstructor(Instructor instructor, System.Web.HttpPostedFileBase image)
         {
             string uniqueFileName = null;
 
@@ -56,9 +53,20 @@ namespace eLearningProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateInstructor(Instructor instructor)
+        public ActionResult UpdateInstructor(Instructor instructor, System.Web.HttpPostedFileBase image)
         {
             var value = context.Instructors.Find(instructor.InstructorID);
+
+            string uniqueFileName = null;
+
+            if (image != null)
+            {
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                var path = "~/Images/" + uniqueFileName;
+                image.SaveAs(Server.MapPath(path));
+                instructor.ImageURL = uniqueFileName;
+            }
+
             value.Name = instructor.Name;
             value.Surname = instructor.Surname;
             value.ImageURL = instructor.ImageURL;

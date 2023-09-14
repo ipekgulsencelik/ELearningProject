@@ -67,9 +67,20 @@ namespace ELearningProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateAbout(About about)
+        public ActionResult UpdateAbout(About about, System.Web.HttpPostedFileBase image)
         {
             var value = context.Abouts.Find(about.AboutID);
+
+            string uniqueFileName = null;
+
+            if (image != null)
+            {
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                var path = "~/Images/" + uniqueFileName;
+                image.SaveAs(Server.MapPath(path));
+                about.ImageURL = uniqueFileName;
+            }
+
             value.Title = about.Title;
             value.Description = about.Description;
             value.SubDescription = about.SubDescription;

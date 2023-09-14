@@ -17,6 +17,7 @@
                         <th>#</th>
                         <th>Mail</th>
                         <th>Durum</th>
+                        <th>Gönder</th>
                         <th>Sil</th>
                         <th>Güncelle</th>
                     </tr>
@@ -37,10 +38,15 @@
                                  }
                              </td>
                              <td>
-                                 <a href="/Subscribe/DeleteSubscribe/@item.SubscribeID" class="btn btn-outline-danger" id="DeleteBtn"
-                                    onclick="return confirm('Silmek istediğinize emin misiniz?');"> Sil</a>
+                                 <a href="/Subscribe/SendMailToSubscriber/@item.SubscribeID" class="btn btn-outline-primary">Mail Gönder</a>
                              </td>
-                             <td><a href="/Subscribe/UpdateSubscribe/@item.SubscribeID" class="btn btn-outline-success">Güncelle</a></td>
+                             <td>
+                                 <a href="/Subscribe/DeleteSubscribe/@item.SubscribeID" class="btn btn-outline-danger" id="DeleteBtn"
+                                    onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+                             </td>
+                             <td>
+                                 <a href="/Subscribe/UpdateSubscribe/@item.SubscribeID" class="btn btn-outline-success">Güncelle</a>
+                             </td>
                          </tr>
                     }
                 </table>

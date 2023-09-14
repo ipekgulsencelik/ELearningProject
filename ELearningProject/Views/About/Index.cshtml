@@ -43,8 +43,7 @@
                                     </a>
                                 </td>
                             }
-                            @if (@item.SubDescription == null ||
-@item.SubDescription.Length <= 30)
+                            @if (@item.SubDescription == null || @item.SubDescription.Length <= 30)
                             {
                                 <td>@item.SubDescription</td>
                             }

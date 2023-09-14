@@ -15,20 +15,6 @@ namespace ELearningProject.Controllers
             return View(values);
         }
 
-        [HttpGet]
-        public ActionResult AddMessage()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult AddMessage(Message message)
-        {
-            context.Messages.Add(message);
-            context.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
         public ActionResult DeleteMessage(int id)
         {
             var value = context.Messages.Find(id);
