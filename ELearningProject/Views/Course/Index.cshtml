@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
 }
 
 <div class="row">
@@ -11,27 +12,37 @@
             <div class="card-block">
                 <h3>Kurs Listesi</h3>
                 <br />
-                <table class="table table-bordered">
-                    <tr>
-                        <th>#</th>
-                        <th>Kurs Adı</th>
-                        <th>Kategori</th>
-                        <th>Eğitmen</th>
-                        <th>Sil</th>
-                        <th>Güncelle</th>
-                    </tr>
-                    @foreach (var item in Model)
-                    {
+                @if (Model.Count() > 0)
+                {
+                    <table class="table table-bordered">
                         <tr>
-                            <td>@item.CourseID</td>
-                            <td>@item.Title</td>
-                            <td>@item.Category.CategoryName</td>
-                            <td>@item.Instructor.Name @item.Instructor.Surname</td>
-                            <td><a href="/Course/DeleteCourse/@item.CourseID" class="btn btn-outline-danger">Sil</a></td>
-                            <td><a href="/Course/UpdateCourse/@item.CourseID" class="btn btn-outline-success">Güncelle</a></td>
+                            <th>#</th>
+                            <th>Kurs Adı</th>
+                            <th>Kategori</th>
+                            <th>Eğitmen</th>
+                            <th>Sil</th>
+                            <th>Güncelle</th>
                         </tr>
-                    }
-                </table>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>@count</td>
+                                <td>@item.Title</td>
+                                <td>@item.Category.CategoryName</td>
+                                <td>@item.Instructor.Name @item.Instructor.Surname</td>
+                                <td><a href="/Course/DeleteCourse/@item.CourseID" class="btn btn-outline-danger">Sil</a></td>
+                                <td><a href="/Course/UpdateCourse/@item.CourseID" class="btn btn-outline-success">Güncelle</a></td>
+                            </tr>
+                        }
+                    </table>
+                }
+                else
+                {
+                    <div class="alert alert-warning">
+                        <h3>Herhangi bir kurs bulunamadı...</h3>
+                    </div>
+                }
                 <a href="/Course/AddCourse/" class="btn btn-outline-primary">Yeni Kurs Girişi</a>
             </div>
         </div>
