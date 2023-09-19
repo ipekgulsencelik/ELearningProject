@@ -175,6 +175,7 @@
     <Compile Include="Controllers\ContactInfoController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstructorAnlysisController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
     <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
@@ -234,6 +235,10 @@
     <Compile Include="Migrations\202309142013041_mig_add_course_tables.cs" />
     <Compile Include="Migrations\202309142013041_mig_add_course_tables.designer.cs">
       <DependentUpon>202309142013041_mig_add_course_tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309192114322_mig_update_instructor.cs" />
+    <Compile Include="Migrations\202309192114322_mig_update_instructor.designer.cs">
+      <DependentUpon>202309192114322_mig_update_instructor.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MailRequest.cs" />
@@ -1076,6 +1081,11 @@
     <Content Include="Views\Student\AddStudent.cshtml" />
     <Content Include="Views\Student\UpdateStudent.cshtml" />
     <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Course\CreateCourse.cshtml" />
+    <Content Include="Views\Course\UpdateCourse.cshtml" />
+    <Content Include="Views\InstructorAnlysis\Index.cshtml" />
+    <Content Include="Views\InstructorAnlysis\_InstructorPanelPartial.cshtml" />
+    <Content Include="Views\InstructorAnlysis\_CommentPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1135,6 +1145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309142013041_mig_add_course_tables.resx">
       <DependentUpon>202309142013041_mig_add_course_tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309192114322_mig_update_instructor.resx">
+      <DependentUpon>202309192114322_mig_update_instructor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
