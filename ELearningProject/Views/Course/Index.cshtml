@@ -31,7 +31,7 @@
                                 <td>@item.Title</td>
                                 <td>@item.Category.CategoryName</td>
                                 <td>@item.Instructor.Name @item.Instructor.Surname</td>
-                                <td><a href="/Course/DeleteCourse/@item.CourseID" class="btn btn-outline-danger">Sil</a></td>
+                                <td><a href="/Course/DeleteCourse/@item.CourseID" id="deleteCourse" class="btn btn-outline-danger">Sil</a></td>
                                 <td><a href="/Course/UpdateCourse/@item.CourseID" class="btn btn-outline-success">Güncelle</a></td>
                             </tr>
                         }
@@ -48,3 +48,10 @@
         </div>
     </div>
 </div>
+
+<script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js
+"></script>
+<link href="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css
+" rel="stylesheet">

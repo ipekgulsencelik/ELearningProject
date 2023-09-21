@@ -1,0 +1,81 @@
+﻿@model List<ELearningProject.DAL.Entities.Carousel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-block">
+                <h3>Carousel Listesi</h3>
+                <br />
+                <table class="table table-bordered">
+                    <tr>
+                        <th>#</th>
+                        <th>Görsel</th>
+                        <th>Başlık</th>
+                        <th>Alt-Başlık</th>
+                        <th>Açıklama</th>
+                        <th style="width:20px;">Durum</th>
+                        <th>Sil</th>
+                        <th>Güncelle</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td><img src="~/Images/@item.ImageURL" style="height:50px; width:50px;" /></td>
+                            <td>@item.Title</td>
+                            @if (@item.SubTitle == null || @item.SubTitle.Length <= 30)
+                            {
+                                <td>@item.SubTitle</td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a href="#" id="SubTitleBtn"
+                                       onclick="return confirm('@item.SubTitle');">
+                                        @item.SubTitle.Substring(0, 10)...
+                                    </a>
+                                </td>
+                            }>
+                            @if (@item.Description == null || @item.Description.Length <= 30)
+                            {
+                                <td>@item.Description</td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a href="#" id="DescriptionBtn"
+                                       onclick="return confirm('@item.Description');">
+                                        @item.Description.Substring(0, 10)...
+                                    </a>
+                                </td>
+                            }
+                            <td>
+                                @if (item.Status)
+                                {
+                                    <i class="fa fa-check-circle"></i>
+                                }
+                                else
+                                {
+                                    <i class="fa fa-times-circle"></i>
+                                }
+                            </td>
+                            <td>
+                                <a href="/Carousel/DeleteCarousel/@item.CarouselID" class="btn btn-outline-danger" id="DeleteBtn"
+                                   onclick="return confirm('Silmek istediğinize emin misiniz?');"> Sil</a>
+                            </td>
+                            <td><a href="/Carousel/UpdateCarousel/@item.CarouselID" class="btn btn-outline-success">Güncelle</a></td>
+                        </tr>
+                    }
+                </table>
+                <a href="/Carousel/AddCarousel/" class="btn btn-outline-primary">Yeni Carousel Girişi</a>
+            </div>
+        </div>
+    </div>
+</div>

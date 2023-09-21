@@ -8,6 +8,9 @@ namespace ELearningProject.DAL.Entities
         [Key]
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
+        public string ImageURL { get; set; }
+        public bool IsHome { get; set; }
+        public bool Status { get; set; }
 
         public List<Course> Courses { get; set; }
     }

@@ -17,7 +17,10 @@
                     <table class="table table-bordered">
                         <tr>
                             <th>#</th>
+                            <th>Görsel</th>
                             <th>Kategori Adı</th>
+                            <th style="width:20px;">Ana Sayfa</th>
+                            <th style="width:20px;">Durum</th>
                             <th>Sil</th>
                             <th>Güncelle</th>
                         </tr>
@@ -26,7 +29,28 @@
                             count++;
                             <tr>
                                 <td>@count</td>
+                                <td><img src="~/Images/@item.ImageURL" style="height:50px; width:50px" /></td>
                                 <td>@item.CategoryName</td>
+                                <td>
+                                    @if (item.IsHome)
+                                    {
+                                        <i class="fa fa-check-circle"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-times-circle"></i>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.Status)
+                                    {
+                                        <i class="fa fa-check-circle"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-times-circle"></i>
+                                    }
+                                </td>
                                 <td>
                                     <a href="/Category/DeleteCategory/@item.CategoryID" class="btn btn-outline-danger" id="DeleteBtn"
                                        onclick="return confirm('Silmek istediğinize emin misiniz?');"> Sil</a>

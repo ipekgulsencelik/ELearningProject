@@ -75,12 +75,16 @@ namespace ELearningProject.Controllers
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
                 var path = "~/Images/" + uniqueFileName;
                 image.SaveAs(Server.MapPath(path));
-                testimonial.ImageURL = uniqueFileName;
+                testimonial.ImageURL = uniqueFileName; 
+                value.ImageURL = testimonial.ImageURL;
+            }
+            else
+            {
+                value.ImageURL = value.ImageURL;
             }
 
             value.NameSurname = testimonial.NameSurname;
             value.Title = testimonial.Title;
-            value.ImageURL = testimonial.ImageURL;
             value.Comment = testimonial.Comment;
             value.Status = testimonial.Status;
             context.SaveChanges();

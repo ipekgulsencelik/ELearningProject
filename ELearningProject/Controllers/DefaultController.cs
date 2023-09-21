@@ -1,9 +1,13 @@
-﻿using System.Web.Mvc;
+﻿using ELearningProject.DAL.Context;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace ELearningProject.Controllers
 {
     public class DefaultController : Controller
     {
+        ELearningContext context = new ELearningContext();
+
         // GET: Default
         public ActionResult Index()
         {
@@ -22,7 +26,8 @@ namespace ELearningProject.Controllers
 
         public PartialViewResult _CarouselPartial()
         {
-            return PartialView();
+            var values = context.Carousels.ToList();
+            return PartialView(values);
         }
 
         public PartialViewResult _ScriptPartial()
@@ -37,32 +42,53 @@ namespace ELearningProject.Controllers
 
         public PartialViewResult _ServicePartial()
         {
-            return PartialView();
+            var values = context.Services.ToList();
+            return PartialView(values);
         }
 
         public PartialViewResult _AboutPartial()
         {
-            return PartialView();
+            var value = context.Abouts.OrderByDescending(x => x.AboutID).FirstOrDefault();
+
+            ViewBag.image = value.ImageURL;
+            ViewBag.title = value.Title;
+            ViewBag.description = value.Description;
+            ViewBag.subDescription = value.SubDescription;
+
+            var values = context.AboutItems.ToList();
+
+            return PartialView(values);
         }
 
         public PartialViewResult _CategoryPartial()
         {
-            return PartialView();
+            var values = context.Categories.Where(x => x.IsHome == true).Take(4).ToList();
+            return PartialView(values);
         }
 
         public PartialViewResult _CoursePartial()
         {
-            return PartialView();
+            var values = context.Courses.Where(x => x.Status == true && x.IsHome == true && x.IsPopular == true).OrderByDescending(y => y.CourseID).Take(3).ToList();
+            return PartialView(values);
         }
 
         public PartialViewResult _TeamPartial()
         {
-            return PartialView();
+            var values = context.Instructors
+                .Where(x =>
+                            x.Status == true &&
+                            x.IsHome == true)
+                .OrderByDescending(y =>
+                                   y.InstructorID)
+                .Take(4)
+                .ToList();
+            return PartialView(values);
         }
 
         public PartialViewResult _TestimonialPartial()
         {
-            return PartialView();
+            var values = context.Testimonials.ToList();
+            return PartialView(values);
         }
 
         public PartialViewResult _FooterPartial()

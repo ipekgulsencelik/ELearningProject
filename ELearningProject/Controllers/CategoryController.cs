@@ -1,5 +1,6 @@
 ﻿using ELearningProject.DAL.Context;
 using ELearningProject.DAL.Entities;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -22,8 +23,38 @@ namespace ELearningProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddCategory(Category category)
+        public ActionResult AddCategory(Category category, System.Web.HttpPostedFileBase image)
         {
+            string uniqueFileName = null;
+
+            if (image != null)
+            {
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                var path = "~/Images/" + uniqueFileName;
+                image.SaveAs(Server.MapPath(path));
+                category.ImageURL = uniqueFileName;
+            }
+
+            if (Request.Form["IsHome"] != null)
+            {
+                string isHome = Request.Form["IsHome"];
+            }
+            else
+            {
+                category.Status = false;
+            }
+
+            if (Request.Form["Status"] != null)
+            {
+                // The "Status" checkbox was checked (true)
+                string status = Request.Form["Status"]; // status will be "True"
+            }
+            else
+            {
+                // The "Status" checkbox was not checked (false)
+                category.Status = false;
+            }
+
             context.Categories.Add(category);
             context.SaveChanges();
             return RedirectToAction("Index");
@@ -45,10 +76,28 @@ namespace ELearningProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateCategory(Category category)
+        public ActionResult UpdateCategory(Category category, System.Web.HttpPostedFileBase image)
         {
             var value = context.Categories.Find(category.CategoryID);
+
+            string uniqueFileName = null;
+
+            if (image != null)
+            {
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                var path = "~/Images/" + uniqueFileName;
+                image.SaveAs(Server.MapPath(path));
+                category.ImageURL = uniqueFileName; 
+                value.ImageURL = category.ImageURL;
+            }
+            else
+            {
+                value.ImageURL = value.ImageURL;
+            }
+
             value.CategoryName = category.CategoryName;
+            value.IsHome = category.IsHome;
+            value.Status = category.Status;
             context.SaveChanges();
             return RedirectToAction("Index");
         }

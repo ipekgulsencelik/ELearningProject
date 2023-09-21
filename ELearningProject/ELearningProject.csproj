@@ -171,9 +171,11 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AboutItemController.cs" />
     <Compile Include="Controllers\AdminLayoutController.cs" />
+    <Compile Include="Controllers\CarouselController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactInfoController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstructorAnlysisController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
@@ -186,6 +188,7 @@
     <Compile Include="DAL\Context\ELearningContext.cs" />
     <Compile Include="DAL\Entities\About.cs" />
     <Compile Include="DAL\Entities\AboutItem.cs" />
+    <Compile Include="DAL\Entities\Carousel.cs" />
     <Compile Include="DAL\Entities\Category.cs" />
     <Compile Include="DAL\Entities\ContactInfo.cs" />
     <Compile Include="DAL\Entities\Course.cs" />
@@ -239,6 +242,34 @@
     <Compile Include="Migrations\202309192114322_mig_update_instructor.cs" />
     <Compile Include="Migrations\202309192114322_mig_update_instructor.designer.cs">
       <DependentUpon>202309192114322_mig_update_instructor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309202116146_mig_add_carousel.cs" />
+    <Compile Include="Migrations\202309202116146_mig_add_carousel.designer.cs">
+      <DependentUpon>202309202116146_mig_add_carousel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309202214106_mig_update_service.cs" />
+    <Compile Include="Migrations\202309202214106_mig_update_service.designer.cs">
+      <DependentUpon>202309202214106_mig_update_service.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309210924063_mig_update_category.cs" />
+    <Compile Include="Migrations\202309210924063_mig_update_category.designer.cs">
+      <DependentUpon>202309210924063_mig_update_category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309211058267_mig_update_instructor1.cs" />
+    <Compile Include="Migrations\202309211058267_mig_update_instructor1.designer.cs">
+      <DependentUpon>202309211058267_mig_update_instructor1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309211101555_mig_update_instructor_media.cs" />
+    <Compile Include="Migrations\202309211101555_mig_update_instructor_media.designer.cs">
+      <DependentUpon>202309211101555_mig_update_instructor_media.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309211220114_mig_update_course.cs" />
+    <Compile Include="Migrations\202309211220114_mig_update_course.designer.cs">
+      <DependentUpon>202309211220114_mig_update_course.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309212047222_mig_update_course_duration.cs" />
+    <Compile Include="Migrations\202309212047222_mig_update_course_duration.designer.cs">
+      <DependentUpon>202309212047222_mig_update_course_duration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MailRequest.cs" />
@@ -1086,6 +1117,22 @@
     <Content Include="Views\InstructorAnlysis\Index.cshtml" />
     <Content Include="Views\InstructorAnlysis\_InstructorPanelPartial.cshtml" />
     <Content Include="Views\InstructorAnlysis\_CommentPartial.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Default\_AboutPartial.cshtml" />
+    <Content Include="Views\Default\_CarouselPartial.cshtml" />
+    <Content Include="Views\Default\_CategoryPartial.cshtml" />
+    <Content Include="Views\Default\_CoursePartial.cshtml" />
+    <Content Include="Views\Default\_FooterPartial.cshtml" />
+    <Content Include="Views\Default\_HeadPartial.cshtml" />
+    <Content Include="Views\Default\_NavbarPartial.cshtml" />
+    <Content Include="Views\Default\_ScriptPartial.cshtml" />
+    <Content Include="Views\Default\_ServicePartial.cshtml" />
+    <Content Include="Views\Default\_SpinnerPartial.cshtml" />
+    <Content Include="Views\Default\_TeamPartial.cshtml" />
+    <Content Include="Views\Default\_TestimonialPartial.cshtml" />
+    <Content Include="Views\Carousel\Index.cshtml" />
+    <Content Include="Views\Carousel\AddCarousel.cshtml" />
+    <Content Include="Views\Carousel\UpdateCarousel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1148,6 +1195,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309192114322_mig_update_instructor.resx">
       <DependentUpon>202309192114322_mig_update_instructor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309202116146_mig_add_carousel.resx">
+      <DependentUpon>202309202116146_mig_add_carousel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309202214106_mig_update_service.resx">
+      <DependentUpon>202309202214106_mig_update_service.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309210924063_mig_update_category.resx">
+      <DependentUpon>202309210924063_mig_update_category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309211058267_mig_update_instructor1.resx">
+      <DependentUpon>202309211058267_mig_update_instructor1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309211101555_mig_update_instructor_media.resx">
+      <DependentUpon>202309211101555_mig_update_instructor_media.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309211220114_mig_update_course.resx">
+      <DependentUpon>202309211220114_mig_update_course.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309212047222_mig_update_course_duration.resx">
+      <DependentUpon>202309212047222_mig_update_course_duration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

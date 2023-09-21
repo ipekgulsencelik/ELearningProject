@@ -79,12 +79,16 @@ namespace ELearningProject.Controllers
                 var path = "~/Images/" + uniqueFileName;
                 image.SaveAs(Server.MapPath(path));
                 about.ImageURL = uniqueFileName;
+                value.ImageURL = about.ImageURL;
+            }
+            else
+            {
+                value.ImageURL = value.ImageURL;
             }
 
             value.Title = about.Title;
             value.Description = about.Description;
             value.SubDescription = about.SubDescription;
-            value.ImageURL = about.ImageURL;
             value.Status = about.Status;
             context.SaveChanges();
             return RedirectToAction("Index");
