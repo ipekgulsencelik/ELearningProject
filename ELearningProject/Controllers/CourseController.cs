@@ -140,6 +140,7 @@ namespace ELearningProject.Controllers
             }
 
             value.Title = course.Title;
+            value.Description = course.Description;
             value.CategoryID = course.CategoryID;
             value.Duration = course.Duration;
             value.Price = course.Price;

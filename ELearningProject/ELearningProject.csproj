@@ -177,7 +177,7 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\InstructorAnlysisController.cs" />
+    <Compile Include="Controllers\InstructorAnalysisController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
     <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
@@ -190,6 +190,7 @@
     <Compile Include="DAL\Entities\AboutItem.cs" />
     <Compile Include="DAL\Entities\Carousel.cs" />
     <Compile Include="DAL\Entities\Category.cs" />
+    <Compile Include="DAL\Entities\Comment.cs" />
     <Compile Include="DAL\Entities\ContactInfo.cs" />
     <Compile Include="DAL\Entities\Course.cs" />
     <Compile Include="DAL\Entities\CourseRegister.cs" />
@@ -271,6 +272,18 @@
     <Compile Include="Migrations\202309212047222_mig_update_course_duration.designer.cs">
       <DependentUpon>202309212047222_mig_update_course_duration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309221924541_mig_add_comment.cs" />
+    <Compile Include="Migrations\202309221924541_mig_add_comment.designer.cs">
+      <DependentUpon>202309221924541_mig_add_comment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309231213145_mig_relations_comment.cs" />
+    <Compile Include="Migrations\202309231213145_mig_relations_comment.designer.cs">
+      <DependentUpon>202309231213145_mig_relations_comment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309232041342_mig_add_description_course.cs" />
+    <Compile Include="Migrations\202309232041342_mig_add_description_course.designer.cs">
+      <DependentUpon>202309232041342_mig_add_description_course.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MailRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -295,6 +308,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\profile-bg.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -1114,9 +1128,9 @@
     <Content Include="Views\Course\Index.cshtml" />
     <Content Include="Views\Course\CreateCourse.cshtml" />
     <Content Include="Views\Course\UpdateCourse.cshtml" />
-    <Content Include="Views\InstructorAnlysis\Index.cshtml" />
-    <Content Include="Views\InstructorAnlysis\_InstructorPanelPartial.cshtml" />
-    <Content Include="Views\InstructorAnlysis\_CommentPartial.cshtml" />
+    <Content Include="Views\InstructorAnalysis\Index.cshtml" />
+    <Content Include="Views\InstructorAnalysis\_InstructorPanelPartial.cshtml" />
+    <Content Include="Views\InstructorAnalysis\_CommentPartial.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Default\_AboutPartial.cshtml" />
     <Content Include="Views\Default\_CarouselPartial.cshtml" />
@@ -1133,10 +1147,10 @@
     <Content Include="Views\Carousel\Index.cshtml" />
     <Content Include="Views\Carousel\AddCarousel.cshtml" />
     <Content Include="Views\Carousel\UpdateCarousel.cshtml" />
+    <Content Include="Views\InstructorAnalysis\_CourseListByInstructorPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -1216,6 +1230,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309212047222_mig_update_course_duration.resx">
       <DependentUpon>202309212047222_mig_update_course_duration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309221924541_mig_add_comment.resx">
+      <DependentUpon>202309221924541_mig_add_comment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309231213145_mig_relations_comment.resx">
+      <DependentUpon>202309231213145_mig_relations_comment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309232041342_mig_add_description_course.resx">
+      <DependentUpon>202309232041342_mig_add_description_course.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

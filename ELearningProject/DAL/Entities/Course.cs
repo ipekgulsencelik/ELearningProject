@@ -6,8 +6,9 @@ namespace ELearningProject.DAL.Entities
     {
         public int CourseID { get; set; }
         public string Title { get; set; }
+        public string Description { get; set; }
         public decimal Price { get; set; }
-        public decimal Duration { get; set; }
+        public int Duration { get; set; }
         public string ImageURL { get; set; }
 
         public bool IsHome { get; set; }
@@ -21,5 +22,7 @@ namespace ELearningProject.DAL.Entities
         public virtual Instructor Instructor { get; set; }
 
         public List<CourseRegister> CourseRegisters { get; set; }
+
+        public List<Comment> Comments { get; set; }
     }
 }
