@@ -1,0 +1,14 @@
+﻿@model ELearningProject.DAL.Entities.ContactInfo
+
+<div class="col-lg-3 col-md-6">
+    <h4 class="text-white mb-3">Contact</h4>
+    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>@Model.Address</p>
+    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>@Model.Phone</p>
+    <p class="mb-2"><i class="fa fa-envelope me-3"></i>@Model.Email</p>
+    <div class="d-flex pt-2">
+        <a class="btn btn-outline-light btn-social" href="@Model.SocialMedia1"><i class="fab fa-twitter"></i></a>
+        <a class="btn btn-outline-light btn-social" href="@Model.SocialMedia2"><i class="fab fa-facebook-f"></i></a>
+        <a class="btn btn-outline-light btn-social" href="@Model.SocialMedia3"><i class="fab fa-youtube"></i></a>
+        <a class="btn btn-outline-light btn-social" href="@Model.SocialMedia4"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+</div>

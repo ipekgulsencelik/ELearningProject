@@ -32,6 +32,15 @@ namespace ELearningProject.Controllers
                 testimonial.ImageURL = uniqueFileName;
             }
 
+            if (Request.Form["IsHome"] != null)
+            {
+                string isHome = Request.Form["IsHome"];
+            }
+            else
+            {
+                testimonial.IsHome = false;
+            }
+
             if (Request.Form["Status"] != null)
             {
                 // The "Status" checkbox was checked (true)
@@ -86,6 +95,7 @@ namespace ELearningProject.Controllers
             value.NameSurname = testimonial.NameSurname;
             value.Title = testimonial.Title;
             value.Comment = testimonial.Comment;
+            value.IsHome = testimonial.IsHome;
             value.Status = testimonial.Status;
             context.SaveChanges();
             return RedirectToAction("Index");

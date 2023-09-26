@@ -22,6 +22,15 @@ namespace ELearningProject.Controllers
         [HttpPost]
         public ActionResult AddService(Service service)
         {
+            if (Request.Form["IsHome"] != null)
+            {
+                string isHome = Request.Form["IsHome"];
+            }
+            else
+            {
+                service.IsHome = false;
+            }
+
             if (Request.Form["Status"] != null)
             {
                 // The "Status" checkbox was checked (true)
@@ -60,6 +69,7 @@ namespace ELearningProject.Controllers
             value.Icon = service.Icon;
             value.Title = service.Title;
             value.Description = service.Description;
+            value.IsHome = service.IsHome;
             value.Status = service.Status;
             context.SaveChanges();
             return RedirectToAction("Index");

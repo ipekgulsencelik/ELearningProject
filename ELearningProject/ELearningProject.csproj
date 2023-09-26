@@ -170,12 +170,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AboutItemController.cs" />
+    <Compile Include="Controllers\AboutPageController.cs" />
     <Compile Include="Controllers\AdminLayoutController.cs" />
     <Compile Include="Controllers\CarouselController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactInfoController.cs" />
+    <Compile Include="Controllers\ContactPageController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\CoursePageController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstructorAnalysisController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
@@ -184,7 +188,9 @@
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\SubscribeController.cs" />
+    <Compile Include="Controllers\TeamPageController.cs" />
     <Compile Include="Controllers\TestimonialController.cs" />
+    <Compile Include="Controllers\TestimonialPageController.cs" />
     <Compile Include="DAL\Context\ELearningContext.cs" />
     <Compile Include="DAL\Entities\About.cs" />
     <Compile Include="DAL\Entities\AboutItem.cs" />
@@ -283,6 +289,22 @@
     <Compile Include="Migrations\202309232041342_mig_add_description_course.cs" />
     <Compile Include="Migrations\202309232041342_mig_add_description_course.designer.cs">
       <DependentUpon>202309232041342_mig_add_description_course.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309251848058_mig_update_contact1.cs" />
+    <Compile Include="Migrations\202309251848058_mig_update_contact1.designer.cs">
+      <DependentUpon>202309251848058_mig_update_contact1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309260759508_mig_add_testimonial_property.cs" />
+    <Compile Include="Migrations\202309260759508_mig_add_testimonial_property.designer.cs">
+      <DependentUpon>202309260759508_mig_add_testimonial_property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309260852520_mig_add_service_property.cs" />
+    <Compile Include="Migrations\202309260852520_mig_add_service_property.designer.cs">
+      <DependentUpon>202309260852520_mig_add_service_property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309261054257_mig_add_contact_property.cs" />
+    <Compile Include="Migrations\202309261054257_mig_add_contact_property.designer.cs">
+      <DependentUpon>202309261054257_mig_add_contact_property.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MailRequest.cs" />
@@ -1148,6 +1170,25 @@
     <Content Include="Views\Carousel\AddCarousel.cshtml" />
     <Content Include="Views\Carousel\UpdateCarousel.cshtml" />
     <Content Include="Views\InstructorAnalysis\_CourseListByInstructorPartial.cshtml" />
+    <Content Include="Views\ContactPage\Index.cshtml" />
+    <Content Include="Views\ContactPage\_MapPartial.cshtml" />
+    <Content Include="Views\ContactPage\_SendMessagePartial.cshtml" />
+    <Content Include="Views\ContactPage\_ContactInfoPartial.cshtml" />
+    <Content Include="Views\Default\_BreadcrumbPartial.cshtml" />
+    <Content Include="Views\TestimonialPage\Index.cshtml" />
+    <Content Include="Views\TestimonialPage\_TestimonialPartial.cshtml" />
+    <Content Include="Views\TeamPage\Index.cshtml" />
+    <Content Include="Views\TeamPage\_TeamPartial.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Error\_404Partial.cshtml" />
+    <Content Include="Views\AboutPage\Index.cshtml" />
+    <Content Include="Views\AboutPage\_ServicePartial.cshtml" />
+    <Content Include="Views\CoursePage\Index.cshtml" />
+    <Content Include="Views\CoursePage\_CoursePartial.cshtml" />
+    <Content Include="Views\Default\_SubscribePartial.cshtml" />
+    <Content Include="Views\Default\_ContactPartial.cshtml" />
+    <Content Include="Views\Default\_GalleryPartial.cshtml" />
+    <Content Include="Views\CoursePage\_CategoryPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1239,6 +1280,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309232041342_mig_add_description_course.resx">
       <DependentUpon>202309232041342_mig_add_description_course.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309251848058_mig_update_contact1.resx">
+      <DependentUpon>202309251848058_mig_update_contact1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309260759508_mig_add_testimonial_property.resx">
+      <DependentUpon>202309260759508_mig_add_testimonial_property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309260852520_mig_add_service_property.resx">
+      <DependentUpon>202309260852520_mig_add_service_property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309261054257_mig_add_contact_property.resx">
+      <DependentUpon>202309261054257_mig_add_contact_property.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

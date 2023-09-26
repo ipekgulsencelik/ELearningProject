@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@Html.Action("_HeadPartial", "Default")
+
+<body>
+    @Html.Action("_SpinnerPartial", "Default")
+
+    @Html.Action("_NavbarPartial", "Default")
+
+    @Html.Action("_BreadcrumbPartial", "Default")
+
+    @Html.Action("_TestimonialPartial", "TestimonialPage")
+
+    @Html.Action("_FooterPartial", "Default")
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    @Html.Action("_ScriptPartial", "Default")
+
+</body>
+
+</html>

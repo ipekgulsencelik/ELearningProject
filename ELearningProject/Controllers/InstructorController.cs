@@ -20,9 +20,10 @@ namespace eLearningProject.Controllers
         public ActionResult AddInstructor() { return View(); }
 
         [HttpPost]
-        public ActionResult AddInstructor(Instructor instructor, System.Web.HttpPostedFileBase image)
+        public ActionResult AddInstructor(Instructor instructor, System.Web.HttpPostedFileBase image, System.Web.HttpPostedFileBase cover)
         {
             string uniqueFileName = null;
+            string uniqueImageName = null;
 
             if (image != null)
             {
@@ -32,7 +33,13 @@ namespace eLearningProject.Controllers
                 instructor.ImageURL = uniqueFileName;
             }
 
-            instructor.CoverImage = uniqueFileName;
+            if (cover != null)
+            {
+                uniqueImageName = Guid.NewGuid().ToString() + "_" + cover.FileName;
+                var path = "~/Images/" + uniqueImageName;
+                cover.SaveAs(Server.MapPath(path));
+                instructor.CoverImage = uniqueImageName;
+            }
 
             if (Request.Form["IsHome"] != null)
             {
@@ -75,11 +82,12 @@ namespace eLearningProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateInstructor(Instructor instructor, System.Web.HttpPostedFileBase image)
+        public ActionResult UpdateInstructor(Instructor instructor, System.Web.HttpPostedFileBase image, System.Web.HttpPostedFileBase cover)
         {
             var value = context.Instructors.Find(instructor.InstructorID);
 
             string uniqueFileName = null;
+            string uniqueImageName = null;
 
             if (image != null)
             {
@@ -88,12 +96,23 @@ namespace eLearningProject.Controllers
                 image.SaveAs(Server.MapPath(path));
                 instructor.ImageURL = uniqueFileName;
                 value.ImageURL = instructor.ImageURL;
-                value.CoverImage = instructor.ImageURL;
             }
             else
             {
                 value.ImageURL = value.ImageURL;
-                value.CoverImage = value.ImageURL;
+            }
+
+            if (cover != null)
+            {
+                uniqueImageName = Guid.NewGuid().ToString() + "_" + cover.FileName;
+                var path = "~/Images/" + uniqueImageName;
+                cover.SaveAs(Server.MapPath(path));
+                instructor.CoverImage = uniqueImageName;
+                value.CoverImage = instructor.CoverImage;
+            }
+            else
+            {
+                value.CoverImage = value.CoverImage;
             }
 
             value.Name = instructor.Name;
