@@ -17,6 +17,17 @@ namespace ELearningProject.Controllers
         {
             int id = 9;
             var values = context.Instructors.Where(x => x.InstructorID == id).ToList();
+
+            var instructor = context.Instructors.Where(x => x.Name == "Ahmet" && x.Surname == "Ölçen").Select(y => y.InstructorID).FirstOrDefault();
+
+            ViewBag.courseCount = context.Courses.Where(x => x.InstructorID == 9).Count();
+
+            var courseList = context.Courses.Where(x => x.InstructorID == instructor).Select(y => y.CourseID).ToList();
+
+            ViewBag.commentCount = context.Comments.Where(x => courseList.Contains(x.CourseID)).Count();
+
+            ViewBag.averageReviewScore = context.Reviews.Where(x => courseList.Contains(x.CourseID)).Average(x => x.ReviewScore);
+
             return PartialView(values);
         }
 

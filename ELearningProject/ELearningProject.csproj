@@ -183,8 +183,10 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstructorAnalysisController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\SubscribeController.cs" />
@@ -203,6 +205,8 @@
     <Compile Include="DAL\Entities\Instructor.cs" />
     <Compile Include="DAL\Entities\Map.cs" />
     <Compile Include="DAL\Entities\Message.cs" />
+    <Compile Include="DAL\Entities\Process.cs" />
+    <Compile Include="DAL\Entities\Review.cs" />
     <Compile Include="DAL\Entities\Service.cs" />
     <Compile Include="DAL\Entities\Student.cs" />
     <Compile Include="DAL\Entities\Subscribe.cs" />
@@ -305,6 +309,14 @@
     <Compile Include="Migrations\202309261054257_mig_add_contact_property.cs" />
     <Compile Include="Migrations\202309261054257_mig_add_contact_property.designer.cs">
       <DependentUpon>202309261054257_mig_add_contact_property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309271149366_mig_add_review.cs" />
+    <Compile Include="Migrations\202309271149366_mig_add_review.designer.cs">
+      <DependentUpon>202309271149366_mig_add_review.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309271457364_mig_add_process.cs" />
+    <Compile Include="Migrations\202309271457364_mig_add_process.designer.cs">
+      <DependentUpon>202309271457364_mig_add_process.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MailRequest.cs" />
@@ -1189,6 +1201,9 @@
     <Content Include="Views\Default\_ContactPartial.cshtml" />
     <Content Include="Views\Default\_GalleryPartial.cshtml" />
     <Content Include="Views\CoursePage\_CategoryPartial.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Profile\MyCourseList.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1292,6 +1307,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309261054257_mig_add_contact_property.resx">
       <DependentUpon>202309261054257_mig_add_contact_property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309271149366_mig_add_review.resx">
+      <DependentUpon>202309271149366_mig_add_review.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309271457364_mig_add_process.resx">
+      <DependentUpon>202309271457364_mig_add_process.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
