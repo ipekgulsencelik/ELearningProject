@@ -1,4 +1,6 @@
-﻿@model List<ELearningProject.DAL.Entities.Course>
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<ELearningProject.DAL.Entities.Course>
 
 <!-- Courses Start -->
 <div class="container-xxl py-5">
@@ -43,3 +45,9 @@
     </div>
 </div>
 <!-- Courses End -->
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+{
+    LiElementClasses = new List<String>
+    {"page-link"}
+})

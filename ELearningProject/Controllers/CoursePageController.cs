@@ -1,6 +1,8 @@
 ﻿using ELearningProject.DAL.Context;
 using System.Linq;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace ELearningProject.Controllers
 {
@@ -21,9 +23,9 @@ namespace ELearningProject.Controllers
             return PartialView(values);
         }
 
-        public PartialViewResult _CoursePartial()
+        public PartialViewResult _CoursePartial(int page = 1)
         {
-            var values = context.Courses.Where(x => x.Status == true && x.IsPopular == true).OrderByDescending(y => y.CourseID).ToList();
+            var values = context.Courses.Where(x => x.Status == true && x.IsPopular == true).OrderByDescending(y => y.CourseID).ToList().ToPagedList(page, 3);
             return PartialView(values);
         }
     }

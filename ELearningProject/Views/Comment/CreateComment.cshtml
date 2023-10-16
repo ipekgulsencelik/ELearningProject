@@ -1,0 +1,20 @@
+﻿@model ELearningProject.DAL.Entities.Comment
+
+@{
+    ViewBag.Title = "CreateComment";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+<h2>Yeni Yorum Ekleme Sayfası</h2>
+<br />
+<form method="post">
+    <div class="form-group">
+        <label>Kurs Seçiniz</label>
+        @Html.DropDownListFor(x => x.CourseID, (List<SelectListItem>)ViewBag.course, new { @class = "form-control" })
+    </div>
+    <label>Yorumunuz:</label>
+    <textarea name="CommentText" class="form-control" rows="8"></textarea>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-outline-primary">Kaydet</button>
+</form>

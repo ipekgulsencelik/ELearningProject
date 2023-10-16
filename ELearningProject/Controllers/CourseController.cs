@@ -3,6 +3,7 @@ using ELearningProject.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 
 namespace ELearningProject.Controllers
@@ -150,6 +151,41 @@ namespace ELearningProject.Controllers
             value.Status = course.Status;
             context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult DetailCourse(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Course course = context.Courses.Find(id);
+            if (course == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.courseId = id.Value;
+
+            var comments = context.Comments.Where(x => x.CourseID.Equals(id.Value)).ToList();
+            ViewBag.comments = comments;
+
+            var ratings = context.Reviews.Where(x => x.CourseID.Equals(id.Value)).ToList();
+            ViewBag.ratings = ratings;
+            if (ratings.Count() > 0)
+            {
+                var ratingSum = ratings.Sum(x => x.ReviewScore);
+                ViewBag.RatingSum = ratingSum;
+                var ratingCount = ratings.Count();
+                ViewBag.RatingCount = ratingCount;
+            }
+            else
+            {
+                ViewBag.RatingSum = 0;
+                ViewBag.RatingCount = 0;
+            }
+
+            return View(course);
         }
     }
 }

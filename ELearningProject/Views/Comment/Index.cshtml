@@ -1,0 +1,69 @@
+﻿@model List<ELearningProject.DAL.Entities.Comment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    int count = 0;
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-block">
+                <h3>Yorum Listesi</h3>
+                <br />
+                <table class="table table-bordered">
+                    <tr>
+                        <th>#</th>
+                        <th>Kurs</th>
+                        <th>Yorum</th>
+                        <th>Eğitmen</th>
+                        <th>Tarih</th>
+                        <th>Durum</th>
+                        <th>Sil</th>
+                        <th>Güncelle</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.Course.Title</td>
+                            @if (@item.CommentText == null || @item.CommentText.Length <= 30)
+                            {
+                                <td>@item.CommentText</td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a href="#" id="CommentBtn"
+                                       onclick="return confirm('@item.CommentText');">
+                                        @item.CommentText.Substring(0, 10)...
+                                    </a>
+                                </td>
+                            }
+                            <td>@item.Course.Instructor.Name @item.Course.Instructor.Surname</td>
+                            <td>@item.CommentDate.ToShortDateString()</td>
+                            <td>
+                                @if (item.CommentStatus)
+                                {
+                                    <i class="fa fa-check-circle"></i>
+                                }
+                                else
+                                {
+                                    <i class="fa fa-times-circle"></i>
+                                }
+                            </td>
+                            <td>
+                                <a href="/Comment/DeleteComment/@item.CommentID" class="btn btn-outline-danger" id="DeleteBtn"
+                                   onclick="return confirm('Silmek istediğinize emin misiniz?');"> Sil</a>
+                            </td>
+                            <td><a href="/Comment/UpdateComment/@item.CommentID" class="btn btn-outline-success">Güncelle</a></td>
+                        </tr>
+                    }
+                </table>
+                <a href="/Comment/CreateComment/" class="btn btn-outline-primary">Yeni Yorum Girişi</a>
+            </div>
+        </div>
+    </div>
+</div>

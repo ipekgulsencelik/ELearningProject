@@ -1,0 +1,21 @@
+﻿@model ELearningProject.DAL.Entities.Comment
+
+@{
+    ViewBag.Title = "UpdateComment";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+<h2>Yorum Güncelleme Sayfası</h2>
+<br />
+<form method="post">
+    @Html.HiddenFor(x => x.CommentID)
+    <div class="form-group">
+        <label>Kurs Seçiniz</label>
+        @Html.DropDownListFor(x => x.CourseID, (List<SelectListItem>)ViewBag.course, new { @class = "form-control" })
+    </div>
+    <label>Yorumunuz:</label>
+    <textarea name="CommentText" class="form-control" rows="8">@Model.CommentText</textarea>
+    <br />
+    <br />
+    <button class="btn btn-primary btn-block">Yorum Güncelle</button>
+</form>

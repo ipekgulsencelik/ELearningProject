@@ -11,6 +11,7 @@ namespace ELearningProject.DAL.Entities
         [StringLength(30)]
         public string Surname { get; set; }
 
+        public string PhoneNumber { get; set; }
         public string ImageURL { get; set; }
         public string Title { get; set; }
         public string CoverImage { get; set; }
@@ -18,6 +19,12 @@ namespace ELearningProject.DAL.Entities
         public string SocialMedia1 { get; set; }
         public string SocialMedia2 { get; set; }
         public string SocialMedia3 { get; set; }
+
+        public string Email { get; set; }
+        public string Password { get; set; }
+
+        [Compare("Password", ErrorMessage = "Şifreler uyumlu değil.")]
+        public string ConfirmPassword { get; set; }
 
         public bool IsHome { get; set; }
         public bool Status { get; set; }

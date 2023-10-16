@@ -1,0 +1,72 @@
+﻿@model List<ELearningProject.DAL.Entities.Course>
+
+@{
+    ViewBag.Title = "MyCourse";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+    int count = 0;
+}
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<div class="row page-titles">
+    <div class="col-md-5 col-8 align-self-center">
+        <h3 class="text-themecolor m-b-0 m-t-0">Kurslarım</h3>
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-block">
+            <h4 class="card-title">Kurslar</h4>
+            <div class="table table-hover">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Kurs Adı</th>
+                            <th>Fiyat</th>
+                            <th>Kategori</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>@count</td>
+                                <td>@item.Title</td>
+                                <td>@item.Price ₺</td>
+                                <td>@item.Category.CategoryName</td>
+                                <td>
+                                    <button onclick="deleteMyCourse(@item.CourseID)" type="submit" class="btn btn-outline-danger"><i class='mdi mdi-delete'></i>Sil</button>
+                                    <a href="/InstructorAnalysis/UpdateCourse/@item.CourseID" class="btn btn-outline-primary"><i class='mdi mdi-pencil'></i>Düzenle</a>
+                                    <a href="/InstructorAnalysis/AddVideo/@item.CourseID" asp-route-name="@item.Title" class="btn btn-outline-primary"><i class='mdi mdi-play'></i>Video Ekle</a>
+                                    <a href="/InstructorAnalysis/GetComment/@item.CourseID" asp-route-name="@item.Title" class="btn btn-outline-info"><i class='mdi mdi-comment'></i>Yorumlar</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <a href="/InstructorAnalysis/CreateCourse" class="btn btn-outline-primary"><i class="mdi mdi-plus-circle"></i>Yeni Kurs Ekle</a>
+</div>
+
+<script>
+    function deleteMyCourse(id) {
+        Swal.fire({
+            title: 'Silmek istediğinize emin misiniz?',
+            text: 'Bu öğeyi silerseniz geri alamazsınız!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sil',
+            cancelButtonText: 'İptal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/InstructorAnalysis/DeleteCourse?id=" + id;
+            }
+        });
+    }
+</script>

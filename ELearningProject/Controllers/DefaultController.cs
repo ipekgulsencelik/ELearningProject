@@ -2,7 +2,6 @@
 using ELearningProject.DAL.Entities;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.Services.Description;
 
 namespace ELearningProject.Controllers
 {

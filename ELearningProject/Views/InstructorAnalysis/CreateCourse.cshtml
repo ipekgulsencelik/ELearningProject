@@ -1,0 +1,65 @@
+﻿@model ELearningProject.DAL.Entities.Course
+
+@{
+    ViewBag.Title = "CreateCourse";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+
+<h2>Yeni Kurs Ekleme Sayfası</h2>
+<br />
+<form method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Kurs Adını Giriniz</label>
+                @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Kurs Fiyatını Giriniz</label>
+                @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Kurs Süresini Giriniz</label>
+                <input type="number" name="Duration" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Kurs Görselini Seçiniz</label>
+                <input type="file" name="image" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Kategorisini Seçiniz</label>
+                @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.category, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Açıklama</label>
+                <textarea name="Description" rows="5" class="form-control"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="Status" value="true" id="status">
+                <label class="form-check-label" for="status">Durum</label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <button class="btn btn-primary btn-block">Kursu Ekle</button>
+</form>

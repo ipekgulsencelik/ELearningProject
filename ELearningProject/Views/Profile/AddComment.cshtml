@@ -1,0 +1,21 @@
+﻿﻿@model ELearningProject.DAL.Entities.Comment
+
+@{
+    ViewBag.Title = "AddComment";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+<div class="row page-titles">
+    <div class="col-md-5 col-8 align-self-center">
+        <h3 class="text-themecolor m-b-0 m-t-0">Kursa Yorum Yap</h3>
+    </div>
+</div>
+
+<form method="post">
+    <label>Yorumunuz:</label>
+    <textarea name="CommentText" class="form-control" rows="8"></textarea>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-outline-primary">Kaydet</button>
+</form>
+
