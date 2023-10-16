@@ -1,7 +1,6 @@
 ﻿using ELearningProject.DAL.Context;
 using ELearningProject.DAL.Entities;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -18,6 +17,57 @@ namespace ELearningProject.Controllers
             ViewBag.name = context.Students.Where(x => x.Email == values).Select(y => y.Name + " " + y.Surname).FirstOrDefault();
         
             return View();
+        }
+
+        public PartialViewResult _StudentPanelPartial()
+        {
+            string values = Session["CurrentMail"].ToString();
+            int id = context.Students.Where(x => x.Email == values).Select(y => y.StudentID).FirstOrDefault();
+            
+            var student = context.Students.Where(x => x.StudentID == id).ToList();
+
+            ViewBag.courseCount = context.Processes.Where(x => x.StudentID == id).Count();
+
+            var courseList = context.Processes.Where(x => x.StudentID == id).Select(x => x.CourseID).ToList();
+
+            ViewBag.commentCount = context.Comments.Where(x => courseList.Contains(x.CourseID)).Count();
+
+            ViewBag.averageReviewScore = context.Reviews.Where(x => courseList.Contains(x.CourseID)).Average(x => x.ReviewScore);
+
+            return PartialView(student);
+        }
+
+        public PartialViewResult _CommentPartial()
+        {
+            string values = Session["CurrentMail"].ToString();
+            int id = context.Students.Where(x => x.Email == values).Select(x => x.StudentID).FirstOrDefault();
+
+            var student = context.Students.Where(x => x.StudentID == id).ToList();
+
+            var courseList = context.Processes.Where(x => x.StudentID == id).Select(x => x.CourseID).ToList();
+
+            var commentList = context.Comments.Where(x => courseList.Contains(x.CourseID)).ToList();
+
+            return PartialView(commentList);
+        }
+
+        public PartialViewResult _ContactPartial()
+        {
+            string values = Session["CurrentMail"].ToString();
+            int id = context.Students.Where(x => x.Email == values).Select(x => x.StudentID).FirstOrDefault();
+            var student = context.Students.Where(x => x.StudentID == id).FirstOrDefault();
+
+            return PartialView(student);
+        }
+
+        public PartialViewResult _CoursePartial()
+        {
+            string values = Session["CurrentMail"].ToString();
+            int id = context.Students.Where(x => x.Email == values).Select(x => x.StudentID).FirstOrDefault();
+
+            var courses = context.Processes.Where(x => x.StudentID == id).ToList();
+
+            return PartialView(courses);
         }
 
         public ActionResult MyCourseList()
@@ -110,6 +160,14 @@ namespace ELearningProject.Controllers
             context.Comments.Add(comment);
             context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult WatchCourse(int id)
+        {
+            var values = context.Videos.Where(x => x.CourseID == id).ToList();
+            ViewBag.courseName = context.Courses.Where(x => x.CourseID == id).Select(x => x.Title).FirstOrDefault();
+
+            return View(values);
         }
     }
 }

@@ -77,5 +77,14 @@ namespace ELearningProject.Controllers
             }
             return View();
         }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            Session.RemoveAll();
+            Session.Abandon();
+            return RedirectToAction("Index");
+        }
     }
 }

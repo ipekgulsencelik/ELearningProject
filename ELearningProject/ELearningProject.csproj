@@ -1262,7 +1262,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Profile\MyCourseList.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
-    <Content Include="Views\Course\DetailCourse.cshtml" />
+    <Content Include="Views\Course\CourseDetail.cshtml" />
     <Content Include="Views\Shared\_CommentBox.cshtml" />
     <Content Include="Views\Profile\AddReview.cshtml" />
     <Content Include="Views\Role\AddRole.cshtml" />
@@ -1288,10 +1288,19 @@
     <Content Include="Views\Comment\CreateComment.cshtml" />
     <Content Include="Views\Comment\Index.cshtml" />
     <Content Include="Views\Comment\UpdateComment.cshtml" />
+    <Content Include="Views\InstructorAnalysis\AddVideo.cshtml" />
+    <Content Include="Views\Profile\WatchCourse.cshtml" />
+    <Content Include="Views\InstructorAnalysis\_ContactPartial.cshtml" />
+    <Content Include="Views\Profile\_StudentPanelPartial.cshtml" />
+    <Content Include="Views\Profile\_CommentPartial.cshtml" />
+    <Content Include="Views\Profile\_ContactPartial.cshtml" />
+    <Content Include="Views\Profile\_CoursePartial.cshtml" />
+    <Content Include="Views\InstructorAnalysis\CourseDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ValidationRules\" />
+    <Folder Include="Views\Video\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

@@ -47,7 +47,7 @@
                                 <td>@item.Course.Category.CategoryName</td>
                                 <td>@item.Course.Instructor.Name @item.Course.Instructor.Surname</td>
                                 <td>
-                                    <a asp-action="WatchCourse" asp-route-id="@item.CourseID" asp-route-name="@item.Course.Title" class="btn btn-outline-primary"><i class='mdi mdi-play'></i> Kursu İzle</a>
+                                    <a href="/Profile/WatchCourse/@item.CourseID" asp-route-name="@item.Course.Title" class="btn btn-outline-primary"><i class='mdi mdi-play'></i> Kursu İzle</a>
                                     <a href="/Profile/AddComment/@item.CourseID" asp-route-name="@item.Course.Title" class="btn btn-outline-primary"><i class='mdi mdi-comment'></i> Yorum Yap</a>
                                     <a href="/Profile/AddReview/@item.CourseID" asp-route-name="@item.Course.Title" class="btn btn-outline-primary"><i class='mdi mdi-star-half'></i> Puan Ver</a>
                                 </td>

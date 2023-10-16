@@ -153,7 +153,7 @@ namespace ELearningProject.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult DetailCourse(int? id)
+        public ActionResult CourseDetail(int? id)
         {
             if (id == null)
             {

@@ -1,0 +1,30 @@
+﻿@model ELearningProject.DAL.Entities.Instructor
+
+<div class="tab-pane" id="profile" role="tabpanel">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-3 col-xs-6 b-r">
+                <strong>Ad Soyad</strong>
+                <br>
+                <p class="text-muted">@Model.Name @Model.Surname</p>
+            </div>
+            <div class="col-md-3 col-xs-6 b-r">
+                <strong>Email</strong>
+                <br>
+                <p class="text-muted"><a href="#" target="_blank">@Model.Email</a></p>
+            </div>
+            <div class="col-md-3 col-xs-6 b-r">
+                <strong>Telefon</strong>
+                <br>
+                <p class="text-muted"><a href="#" target="_blank">@Model.PhoneNumber</a></p>
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <strong>LinkedIn</strong>
+                <br>
+                <p class="text-muted"><a href="@Model.SocialMedia1" target="_blank">LinkedIn</a> </p>
+            </div>
+        </div>
+        <hr>
+        <p class="m-t-30"></p>
+    </div>
+</div>

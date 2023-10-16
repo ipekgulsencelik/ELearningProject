@@ -1,10 +1,12 @@
 ﻿@model ELearningProject.DAL.Entities.Course
 
 @{
-    ViewBag.Title = "DetailCourse";
-    Layout = "~/Views/AdminLayout/Index.cshtml";
+    ViewBag.Title = "CourseDetail";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
 }
+
 <link href="~/Content/Site.css" rel="stylesheet" />
+
 @{
     ViewBag.Title = Model.Title;
     var ratings = (IEnumerable<ELearningProject.DAL.Entities.Review>)ViewBag.ratings;
@@ -20,24 +22,19 @@
 }
 
 <h2>@Model.Title</h2>
+<br />
 <div>
     <span class="starFadeN" id="sRate1"></span><span class="starFadeN" id="sRate2"></span><span class="starFadeN" id="sRate3"></span><span class="starFadeN" id="sRate4"></span><span class="starFadeN" id="sRate5"></span>
 </div>
 <div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-    </dl>
+    <div class="col-md-4 col-xs-12">
+        <img src="~/Images/@Model.ImageURL" alt="user" class="img-responsive radius">
+    </div>
+    <div class="col-md-4 col-xs-12">
+        Açıklama: @Model.Description
+        <br />
+        Durum: @Model.Duration dakika
+    </div>
 </div>
 @foreach (var item in ratings)
 {
@@ -57,7 +54,7 @@
     </div>
 }
 <hr />
-@Html.Partial("_CommentBox")
+
 
 <script>
     function SCRate() {

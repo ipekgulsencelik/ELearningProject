@@ -1,15 +1,15 @@
-﻿@model List<ELearningProject.DAL.Entities.Instructor>
+﻿@model List<ELearningProject.DAL.Entities.Student>
 
 @foreach (var item in Model)
 {
     <div class="col-lg-4 col-xlg-3 col-md-5">
         <!-- Column -->
         <div class="card">
-            <img class="card-img-top" src="~/Images/@item.CoverImage" alt="Card image cap">
+            <img class="card-img-top" src="~/Images/profile-bg.jpg" alt="Card image cap">
             <div class="card-block little-profile text-center">
                 <div class="pro-img"><img src="~/Images/@item.ImageURL" alt="user" /></div>
                 <h3 class="m-b-0">@item.Name @item.Surname</h3>
-                <p>@item.Title</p>
+                <p>Öğrenci</p>
                 <a href="/InstructorAnalysis/MyProfile" class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded">Profilim</a>
                 <div class="row text-center m-t-20">
                     <div class="col-lg-4 col-md-4 m-t-20">

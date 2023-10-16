@@ -1,4 +1,4 @@
-﻿@model List<ELearningProject.DAL.Entities.Course>
+﻿@model List<ELearningProject.DAL.Entities.Process>
 
 <div class="tab-pane" id="settings" role="tabpanel">
     <div class="card-block">
@@ -8,15 +8,15 @@
                 <div class="sl-left"></div>
                 <div class="sl-right">
                     <div>
-                        <a href="#" class="link">@item.Title</a> 
-                        <span class="sl-date">@((int)item.Duration / 60) Saat @((int)item.Duration % 60) Dakika</span>
+                        <a href="#" class="link">@item.Course.Title</a>
+                        <span class="sl-date">@((int)item.Course.Duration / 60) Saat @((int)item.Course.Duration % 60) Dakika</span>
                         <div class="m-t-20 row">
                             <div class="col-md-3 col-xs-12">
-                                <img src="~/Images/@item.ImageURL" alt="user" class="img-responsive radius">
+                                <img src="~/Images/@item.Course.ImageURL" alt="user" class="img-responsive radius">
                             </div>
                             <div class="col-md-9 col-xs-12">
-                                <p>@item.Description</p>
-                                <a href="/InstructorAnalysis/CourseDetail/@item.CourseID" class="btn btn-success"> Kursa Git</a>
+                                <p>@item.Course.Description</p>
+                                <a href="/Course/CourseDetail/@item.CourseID" class="btn btn-success"> Kursa Git</a>
                             </div>
                         </div>
                         <div class="like-comm m-t-20">

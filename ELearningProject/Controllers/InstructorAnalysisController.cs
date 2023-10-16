@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using System.Net;
 
 namespace ELearningProject.Controllers
 {
@@ -31,7 +32,16 @@ namespace ELearningProject.Controllers
 
             ViewBag.commentCount = context.Comments.Where(x => courseList.Contains(x.CourseID)).Count();
 
-            //ViewBag.averageReviewScore = context.Reviews.Where(x => courseList.Contains(x.CourseID)).Average(x => x.ReviewScore);
+            ViewBag.averageReviewScore = context.Reviews.Where(x => courseList.Contains(x.CourseID)).Average(x => x.ReviewScore);
+
+            return PartialView(instructor);
+        }
+
+        public PartialViewResult _ContactPartial()
+        {
+            string values = Session["CurrentMail"].ToString();
+            int id = context.Instructors.Where(x => x.Email == values).Select(y => y.InstructorID).FirstOrDefault();
+            var instructor = context.Instructors.Where(x => x.InstructorID == id).FirstOrDefault();
 
             return PartialView(instructor);
         }
@@ -61,6 +71,7 @@ namespace ELearningProject.Controllers
             int id = context.Instructors.Where(x => x.Email == values).Select(y => y.InstructorID).FirstOrDefault();
 
             var courses = context.Courses.Where(x => x.InstructorID == id).ToList();
+
             return PartialView(courses);
         }
 
@@ -147,6 +158,41 @@ namespace ELearningProject.Controllers
             return View(value);
         }
 
+        public ActionResult CourseDetail(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Course course = context.Courses.Find(id);
+            if (course == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.courseId = id;
+
+            var comments = context.Comments.Where(x => x.CourseID.Equals(id.Value)).ToList();
+            ViewBag.comments = comments;
+
+            var ratings = context.Reviews.Where(x => x.CourseID.Equals(id.Value)).ToList();
+            ViewBag.ratings = ratings;
+            if (ratings.Count() > 0)
+            {
+                var ratingSum = ratings.Sum(x => x.ReviewScore);
+                ViewBag.RatingSum = ratingSum;
+                var ratingCount = ratings.Count();
+                ViewBag.RatingCount = ratingCount;
+            }
+            else
+            {
+                ViewBag.RatingSum = 0;
+                ViewBag.RatingCount = 0;
+            }
+
+            return View(course);
+        }
+
         [HttpGet]
         public ActionResult MyProfile()
         {
@@ -187,10 +233,7 @@ namespace ELearningProject.Controllers
             value.ConfirmPassword = instructor.ConfirmPassword;
             context.SaveChanges();
             return RedirectToAction("LoginInstructor", "Login");
-        }
-              
-
-        
+        }     
 
         [HttpPost]
         public ActionResult UpdateCourse(Course course, System.Web.HttpPostedFileBase image)
@@ -221,6 +264,24 @@ namespace ELearningProject.Controllers
             value.IsHome = course.IsHome;
             value.IsPopular = course.IsPopular;
             value.Status = course.Status;
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult AddVideo(int id)
+        {
+            ViewBag.id = id;
+            ViewBag.courseName = context.Courses.Where(x => x.CourseID == id).Select(x => x.Title).FirstOrDefault();
+            var values = context.Videos.Where(x => x.CourseID == id).ToList();
+
+            return View(values);
+        }
+
+        [HttpPost]
+        public ActionResult AddVideo(Video video)
+        {
+            context.Videos.Add(video);
             context.SaveChanges();
             return RedirectToAction("Index");
         }
