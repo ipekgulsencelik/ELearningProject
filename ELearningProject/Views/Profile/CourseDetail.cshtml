@@ -2,9 +2,11 @@
 
 @{
     ViewBag.Title = "CourseDetail";
-    Layout = "~/Views/AdminLayout/Index.cshtml";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
 }
+
 <link href="~/Content/Site.css" rel="stylesheet" />
+
 @{
     ViewBag.Title = Model.Title;
     var ratings = (IEnumerable<ELearningProject.DAL.Entities.Review>)ViewBag.ratings;
@@ -21,6 +23,7 @@
 }
 
 <h2>@Model.Title</h2>
+<br />
 <div>
     <span class="starFadeN" id="sRate1"></span><span class="starFadeN" id="sRate2"></span><span class="starFadeN" id="sRate3"></span><span class="starFadeN" id="sRate4"></span><span class="starFadeN" id="sRate5"></span>
 </div>
@@ -36,13 +39,10 @@
             <p><strong>Fiyat:</strong> @Model.Price ₺</p>
             <p><strong>Süre:</strong> @((int)Model.Duration / 60) Saat @((int)Model.Duration % 60) Dakika</p>
             <p><strong>Mail:</strong> @Model.Instructor.Email</p>
-            <a href="/Course/DeleteCourse/@Model.CourseID" class="btn btn-outline-danger" id="DeleteBtn"
-               onclick="return confirm('Silmek istediğinize emin misiniz?');"> Sil</a>
-            <a href="/Course/UpdateCourse/@Model.CourseID" class="btn btn-outline-primary"><i class='mdi mdi-pencil'></i>Düzenle</a>
-            <a href="/Course/AddVideo/@Model.CourseID" class="btn btn-outline-primary"><i class='mdi mdi-play'></i>Video Ekle</a>
         </div>
     </div>
 </div>
+
 @*
     @foreach (var item in ratings)
     {
@@ -61,6 +61,7 @@
                 }
             </div>
         </div>
+        <br />
     }
 *@
 
@@ -79,6 +80,8 @@
         }
     </div>
 </div>
+<br />
+<a href="/Profile/AddReview/@Model.CourseID" class="btn btn-outline-success"><i class='mdi mdi-star-half'></i> Puan Ver</a>
 <hr />
 <h3>Yorumlar (@comments.Count().ToString())</h3>
 @foreach (var item in comments)
@@ -86,9 +89,6 @@
     <div>
         <p>@item.Student.Name @item.Student.Surname <span class="sl-date">- @item.CommentDate.ToShortDateString()</span></p>
         <p class="m-t-10"> @item.CommentText</p>
-        <a href="/Comment/DeleteComment/@item.CommentID" class="btn btn-outline-danger" id="DeleteBtn"
-           onclick="return confirm('Silmek istediğinize emin misiniz?');"> Sil</a>
-        <a href="/Comment/UpdateComment/@Model.CourseID" class="btn btn-outline-primary"><i class='mdi mdi-pencil'></i>Düzenle</a>
     </div>
     <hr />
 }

@@ -1,0 +1,70 @@
+﻿@model ELearningProject.DAL.Entities.Course
+
+@{
+    ViewBag.Title = "UpdateCourse";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+
+<h2>Kurs Güncelleme Sayfası</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <br />
+    @Html.HiddenFor(x => x.CourseID)
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Kurs Adını Giriniz</label>
+                @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Kurs Fiyatını Giriniz</label>
+                @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Kurs Süresini Giriniz</label>
+                @Html.TextBoxFor(x => x.Duration, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Kurs Görselini Seçiniz</label>
+                <br />
+                <img src="~/Images/@Model.ImageURL" width="90" />
+                <input type="file" name="image" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Kategorisini Seçiniz</label>
+                @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.category, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Açıklama</label>
+                <textarea name="Description" rows="5" class="form-control">@Model.Description</textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="Status" checked="@Model.Status" value="true" id="status">
+                <label class="form-check-label" for="status">Durum</label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <button class="btn btn-primary btn-block">Kursu Güncelle</button>
+</form>
+

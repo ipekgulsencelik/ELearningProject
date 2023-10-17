@@ -1,10 +1,10 @@
 ﻿using ELearningProject.DAL.Context;
 using ELearningProject.DAL.Entities;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
 using System.Net;
+using System.Web.Mvc;
 
 namespace ELearningProject.Controllers
 {
@@ -124,7 +124,6 @@ namespace ELearningProject.Controllers
             string values = Session["CurrentMail"].ToString();
             int id = context.Instructors.Where(x => x.Email == values).Select(y => y.InstructorID).FirstOrDefault();
             course.InstructorID = id;
-            // course.UserID = id;
 
             course.IsHome = false;
             course.IsPopular = false;
@@ -156,6 +155,42 @@ namespace ELearningProject.Controllers
             var value = context.Courses.Find(id);
 
             return View(value);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateCourse(Course course, System.Web.HttpPostedFileBase image)
+        {
+            string values = Session["CurrentMail"].ToString();
+            int id = context.Instructors.Where(x => x.Email == values).Select(x => x.InstructorID).FirstOrDefault();
+
+            var value = context.Courses.Find(course.CourseID);
+
+            string uniqueFileName = null;
+
+            if (image != null)
+            {
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                var path = "~/Images/" + uniqueFileName;
+                image.SaveAs(Server.MapPath(path));
+                course.ImageURL = uniqueFileName;
+                value.ImageURL = course.ImageURL;
+            }
+            else
+            {
+                value.ImageURL = value.ImageURL;
+            }
+
+            value.Title = course.Title;
+            value.Description = course.Description;
+            value.CategoryID = course.CategoryID;
+            value.Duration = course.Duration;
+            value.Price = course.Price;
+            value.InstructorID = id;
+            value.IsHome = false;
+            value.IsPopular = false;
+            value.Status = course.Status;
+            context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         public ActionResult CourseDetail(int? id)
@@ -234,39 +269,6 @@ namespace ELearningProject.Controllers
             context.SaveChanges();
             return RedirectToAction("LoginInstructor", "Login");
         }     
-
-        [HttpPost]
-        public ActionResult UpdateCourse(Course course, System.Web.HttpPostedFileBase image)
-        {
-            var value = context.Courses.Find(course.CourseID);
-
-            string uniqueFileName = null;
-
-            if (image != null)
-            {
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
-                var path = "~/Images/" + uniqueFileName;
-                image.SaveAs(Server.MapPath(path));
-                course.ImageURL = uniqueFileName;
-                value.ImageURL = course.ImageURL;
-            }
-            else
-            {
-                value.ImageURL = value.ImageURL;
-            }
-
-            value.Title = course.Title;
-            value.Description = course.Description;
-            value.CategoryID = course.CategoryID;
-            value.Duration = course.Duration;
-            value.Price = course.Price;
-            value.InstructorID = course.InstructorID;
-            value.IsHome = course.IsHome;
-            value.IsPopular = course.IsPopular;
-            value.Status = course.Status;
-            context.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         [HttpGet]
         public ActionResult AddVideo(int id)

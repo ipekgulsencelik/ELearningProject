@@ -1,0 +1,32 @@
+﻿@model ELearningProject.DAL.Entities.Comment
+
+@{
+    ViewBag.Title = "AddComment";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2>Yeni Yorum Ekleme Sayfası</h2>
+<br />
+<form method="post">
+    <div class="form-group">
+        <label>Öğrenci Seçiniz</label>
+        @Html.DropDownListFor(x => x.StudentID, (List<SelectListItem>)ViewBag.student, new { @class = "form-control" })
+    </div>
+    <br />
+    <div class="form-group">
+        <label>Kurs Seçiniz</label>
+        @Html.DropDownListFor(x => x.CourseID, (List<SelectListItem>)ViewBag.course, new { @class = "form-control" })
+    </div>
+    <br />
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="CommentStatus" value="true" id="status">
+        <label class="form-check-label" for="status">Durum</label>
+    </div>
+    <br />
+    <label>Yorumunuz:</label>
+    <textarea name="CommentText" class="form-control" rows="8"></textarea>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-outline-primary">Kaydet</button>
+</form>
+

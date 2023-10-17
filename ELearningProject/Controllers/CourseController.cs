@@ -187,5 +187,23 @@ namespace ELearningProject.Controllers
 
             return View(course);
         }
+
+        [HttpGet]
+        public ActionResult AddVideo(int id)
+        {
+            ViewBag.id = id;
+            ViewBag.courseName = context.Courses.Where(x => x.CourseID == id).Select(x => x.Title).FirstOrDefault();
+            var values = context.Videos.Where(x => x.CourseID == id).ToList();
+
+            return View(values);
+        }
+
+        [HttpPost]
+        public ActionResult AddVideo(Video video)
+        {
+            context.Videos.Add(video);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

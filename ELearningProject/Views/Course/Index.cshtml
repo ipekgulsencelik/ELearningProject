@@ -20,6 +20,7 @@
                             <th>Kurs Adı</th>
                             <th>Kategori</th>
                             <th>Eğitmen</th>
+                            <th>Video</th>
                             <th>Detay</th>
                             <th>Sil</th>
                             <th>Güncelle</th>
@@ -32,7 +33,8 @@
                                 <td>@item.Title</td>
                                 <td>@item.Category.CategoryName</td>
                                 <td>@item.Instructor.Name @item.Instructor.Surname</td>
-                                <td><a href="/Course/DetailCourse/@item.CourseID" id="deleteCourse" class="btn btn-outline-info">Detay</a></td>
+                                <td><a href="/Course/AddVideo/@item.CourseID" class="btn btn-outline-primary"><i class='mdi mdi-play'></i>Video Ekle</a></td>
+                                <td><a href="/Course/CourseDetail/@item.CourseID" id="deleteCourse" class="btn btn-outline-info">Detay</a></td>
                                 <td><a href="/Course/DeleteCourse/@item.CourseID" id="deleteCourse" class="btn btn-outline-danger">Sil</a></td>
                                 <td><a href="/Course/UpdateCourse/@item.CourseID" class="btn btn-outline-success">Güncelle</a></td>
                             </tr>

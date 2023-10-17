@@ -41,7 +41,7 @@ namespace ELearningProject.Controllers
             }
             else
             {
-                category.Status = false;
+                category.IsHome = false;
             }
 
             if (Request.Form["Status"] != null)

@@ -10,6 +10,7 @@
 @{
     ViewBag.Title = Model.Title;
     var ratings = (IEnumerable<ELearningProject.DAL.Entities.Review>)ViewBag.ratings;
+    var comments = (IEnumerable<ELearningProject.DAL.Entities.Comment>)ViewBag.comments;
     var ratingSum = ViewBag.RatingSum;
     var ratingCount = ViewBag.RatingCount;
 
@@ -27,34 +28,68 @@
     <span class="starFadeN" id="sRate1"></span><span class="starFadeN" id="sRate2"></span><span class="starFadeN" id="sRate3"></span><span class="starFadeN" id="sRate4"></span><span class="starFadeN" id="sRate5"></span>
 </div>
 <div>
-    <div class="col-md-4 col-xs-12">
-        <img src="~/Images/@Model.ImageURL" alt="user" class="img-responsive radius">
-    </div>
-    <div class="col-md-4 col-xs-12">
-        Açıklama: @Model.Description
-        <br />
-        Durum: @Model.Duration dakika
-    </div>
-</div>
-@foreach (var item in ratings)
-{
-    <hr />
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4 col-xs-12">
+            <img src="~/Images/@Model.ImageURL" alt="user" class="img-responsive radius">
+        </div>
+        <div class="col-md-4 col-xs-12">
             <br />
-            @for (var i = 1; i <= item.ReviewScore; i++)
-            {
-                <span class="starGlowN"></span>
-            }
-            @for (var i = (item.ReviewScore + 1); i <= 5; i++)
-            {
-                <span class="starFadeN"></span>
-            }
+            <p><strong>Eğitmen:</strong> @Model.Instructor.Name @Model.Instructor.Surname</p>
+            <p><strong>Açıklama:</strong> @Model.Description</p>
+            <p><strong>Fiyat:</strong> @Model.Price ₺</p>
+            <p><strong>Süre:</strong> @((int)Model.Duration / 60) Saat @((int)Model.Duration % 60) Dakika</p>
+            <p><strong>Mail:</strong> @Model.Instructor.Email</p>
+            <a href="/InstructorAnalysis/UpdateCourse/@Model.CourseID" class="btn btn-outline-primary"><i class='mdi mdi-pencil'></i>Düzenle</a>
+            <a href="/InstructorAnalysis/AddVideo/@Model.CourseID" class="btn btn-outline-primary"><i class='mdi mdi-play'></i>Video Ekle</a>
         </div>
     </div>
-}
-<hr />
+</div>
+@*
+    @foreach (var item in ratings)
+    {
+        <hr />
+        <h3>Ortalama Puan (@rating)</h3>
+        <div class="row">
+            <div class="col-md-3">
+                <br />
+                @for (var i = 1; i <= item.ReviewScore; i++)
+                {
+                    <span class="starGlowN"></span>
+                }
+                @for (var i = (item.ReviewScore + 1); i <= 5; i++)
+                {
+                    <span class="starFadeN"></span>
+                }
+            </div>
+        </div>
+    }
+*@
 
+<hr />
+<h3>Ortalama Puan (@rating)</h3>
+<div class="row">
+    <div class="col-md-3">
+        <br />
+        @for (var i = 1; i <= rating; i++)
+        {
+            <span class="starGlowN"></span>
+        }
+        @for (var i = (rating + 1); i <= 5; i++)
+        {
+            <span class="starFadeN"></span>
+        }
+    </div>
+</div>
+<hr />
+<h3>Yorumlar (@comments.Count().ToString())</h3>
+@foreach (var item in comments)
+{
+    <div>
+        <p>@item.Student.Name @item.Student.Surname <span class="sl-date">- @item.CommentDate.ToShortDateString()</span></p>
+        <p class="m-t-10"> @item.CommentText</p>
+    </div>
+    <hr />
+}
 
 <script>
     function SCRate() {

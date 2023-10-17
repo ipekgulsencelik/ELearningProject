@@ -366,6 +366,10 @@
     <Compile Include="Migrations\202310161302047_mig_add_video_table.designer.cs">
       <DependentUpon>202310161302047_mig_add_video_table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310171809538_mig_edit_admin_table1.cs" />
+    <Compile Include="Migrations\202310171809538_mig_edit_admin_table1.designer.cs">
+      <DependentUpon>202310171809538_mig_edit_admin_table1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MailRequest.cs" />
     <Compile Include="Models\RoleAssignViewModel.cs" />
@@ -1263,7 +1267,6 @@
     <Content Include="Views\Profile\MyCourseList.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Course\CourseDetail.cshtml" />
-    <Content Include="Views\Shared\_CommentBox.cshtml" />
     <Content Include="Views\Profile\AddReview.cshtml" />
     <Content Include="Views\Role\AddRole.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
@@ -1296,6 +1299,13 @@
     <Content Include="Views\Profile\_ContactPartial.cshtml" />
     <Content Include="Views\Profile\_CoursePartial.cshtml" />
     <Content Include="Views\InstructorAnalysis\CourseDetail.cshtml" />
+    <Content Include="Views\Profile\CourseDetail.cshtml" />
+    <Content Include="Views\InstructorAnalysis\UpdateCourse.cshtml" />
+    <Content Include="Views\Course\AddVideo.cshtml" />
+    <Content Include="Views\Comment\CommentList.cshtml" />
+    <Content Include="Views\Comment\EditComment.cshtml" />
+    <Content Include="Views\Comment\AddComment.cshtml" />
+    <Content Include="Views\AdminLayout\MyProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1428,6 +1438,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310161302047_mig_add_video_table.resx">
       <DependentUpon>202310161302047_mig_add_video_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310171809538_mig_edit_admin_table1.resx">
+      <DependentUpon>202310171809538_mig_edit_admin_table1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

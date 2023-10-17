@@ -24,14 +24,14 @@ namespace ELearningProject.Controllers
         [HttpPost]
         public ActionResult LoginAdmin(Admin admin)
         {
-            var values = context.Instructors.FirstOrDefault(x => x.Email == admin.Email && x.Password == admin.Password);
+            var values = context.Admins.FirstOrDefault(x => x.Email == admin.Email && x.Password == admin.Password);
 
             if (values != null)
             {
                 FormsAuthentication.SetAuthCookie(values.Email, false);
                 Session["CurrentMail"] = values.Email;
                 Session.Timeout = 60;
-                return RedirectToAction("Index", "Profile");
+                return RedirectToAction("Index", "Course");
             }
             return View();
         }
