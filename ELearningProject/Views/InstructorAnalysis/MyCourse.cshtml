@@ -29,6 +29,7 @@
                             <th>Sil</th>
                             <th>Güncelle</th>
                             <th>Video</th>
+                            <th>Puan</th>
                             <th>Yorum</th>
                         </tr>
                     </thead>
@@ -49,6 +50,9 @@
                                 </td>
                                 <td>
                                     <a href="/InstructorAnalysis/AddVideo/@item.CourseID" asp-route-name="@item.Title" class="btn btn-outline-primary"><i class='mdi mdi-play'></i>Video Ekle</a>
+                                </td>
+                                <td>
+                                    <a href="/InstructorAnalysis/GetReview/@item.CourseID" class="btn btn-outline-info"><i class='mdi mdi-comment'></i>Puan</a>
                                 </td>
                                 <td>
                                     <a href="/InstructorAnalysis/GetComment/@item.CourseID" asp-route-name="@item.Title" class="btn btn-outline-info"><i class='mdi mdi-comment'></i>Yorumlar</a>

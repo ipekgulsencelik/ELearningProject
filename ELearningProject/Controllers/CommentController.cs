@@ -126,8 +126,8 @@ namespace ELearningProject.Controllers
                                                 }).ToList();
             ViewBag.student = studentList;
 
-            var course = context.Courses.ToList();
-            List<SelectListItem> courseList = (from x in course
+            var courses = context.Courses.ToList();
+            List<SelectListItem> courseList = (from x in courses
                                                select new SelectListItem
                                                {
                                                    Text = x.Title,

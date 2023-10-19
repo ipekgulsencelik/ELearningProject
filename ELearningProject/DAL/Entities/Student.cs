@@ -12,6 +12,7 @@ namespace ELearningProject.DAL.Entities
         public string ImageURL { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public bool Status { get; set; }
 
         [Compare("Password", ErrorMessage = "Şifreler uyumlu değil.")]
         public string ConfirmPassword { get; set; }

@@ -193,6 +193,26 @@ namespace ELearningProject.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult GetReview(int id)
+        {
+            ViewBag.averageReviewScore = context.Reviews.Where(x => x.CourseID == id).Average(x => x.ReviewScore);
+           
+            return View();
+        }
+
+
+        public ActionResult GetComment(int id)
+        {
+            var comments = context.Comments.Where(x => x.CourseID == id).ToList();
+            if (comments == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.comments = comments;
+
+            return View();
+        }
+
         public ActionResult CourseDetail(int? id)
         {
             if (id == null)
@@ -264,8 +284,16 @@ namespace ELearningProject.Controllers
             value.Surname = instructor.Surname;
             value.Email = instructor.Email;
             value.PhoneNumber = instructor.PhoneNumber;
-            value.Password = instructor.Password;
-            value.ConfirmPassword = instructor.ConfirmPassword;
+            if (instructor.Password == null)
+            {
+                value.Password = value.Password;
+                value.ConfirmPassword = value.ConfirmPassword;
+            }
+            else
+            {
+                value.Password = instructor.Password;
+                value.ConfirmPassword = instructor.ConfirmPassword;
+            }
             context.SaveChanges();
             return RedirectToAction("LoginInstructor", "Login");
         }     

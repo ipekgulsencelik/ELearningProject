@@ -370,6 +370,10 @@
     <Compile Include="Migrations\202310171809538_mig_edit_admin_table1.designer.cs">
       <DependentUpon>202310171809538_mig_edit_admin_table1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310191622506_mig_edit_student_table.cs" />
+    <Compile Include="Migrations\202310191622506_mig_edit_student_table.designer.cs">
+      <DependentUpon>202310191622506_mig_edit_student_table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MailRequest.cs" />
     <Compile Include="Models\RoleAssignViewModel.cs" />
@@ -864,6 +868,11 @@
     <Content Include="Templates\material-lite-master\scss\icons\weather-icons\less\css\variables-time.css" />
     <Content Include="Templates\material-lite-master\scss\icons\weather-icons\less\css\variables-wind-names.css" />
     <Content Include="Templates\material-lite-master\table-basic.html" />
+    <Content Include="Templates\web\css\font-awesome.css" />
+    <Content Include="Templates\web\css\style.css" />
+    <Content Include="Templates\web\images\1.jpg" />
+    <Content Include="Templates\web\index.html" />
+    <Content Include="Templates\web\w3layouts-License.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1306,6 +1315,13 @@
     <Content Include="Views\Comment\EditComment.cshtml" />
     <Content Include="Views\Comment\AddComment.cshtml" />
     <Content Include="Views\AdminLayout\MyProfile.cshtml" />
+    <Content Include="Templates\web\fonts\fontawesome-webfont.eot" />
+    <Content Include="Templates\web\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Templates\web\fonts\fontawesome-webfont.woff" />
+    <Content Include="Templates\web\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Templates\web\fonts\FontAwesome.otf" />
+    <Content Include="Views\InstructorAnalysis\GetComment.cshtml" />
+    <Content Include="Views\InstructorAnalysis\GetReview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1441,6 +1457,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310171809538_mig_edit_admin_table1.resx">
       <DependentUpon>202310171809538_mig_edit_admin_table1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310191622506_mig_edit_student_table.resx">
+      <DependentUpon>202310191622506_mig_edit_student_table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

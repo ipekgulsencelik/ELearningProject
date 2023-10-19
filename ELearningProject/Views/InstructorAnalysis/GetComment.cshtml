@@ -1,0 +1,18 @@
+﻿@model List<ELearningProject.DAL.Entities.Comment>
+
+@{
+    ViewBag.Title = "GetComment";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+    var comments = (IEnumerable<ELearningProject.DAL.Entities.Comment>)ViewBag.comments;
+}
+
+<h3>Yorumlar (@comments.Count().ToString())</h3>
+@foreach (var item in comments)
+{
+    <div>
+        <p>@item.Student.Name @item.Student.Surname <span class="sl-date">- @item.CommentDate.ToShortDateString()</span></p>
+        <p class="m-t-10"> @item.CommentText</p>
+    </div>
+    <hr />
+}
+

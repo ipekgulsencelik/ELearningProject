@@ -17,6 +17,7 @@
                     <table class="table table-bordered">
                         <tr>
                             <th>#</th>
+                            <th>Görsel</th>
                             <th>Adı-Soyadı</th>
                             <th>Kurslar</th>
                             <th>Sil</th>
@@ -27,6 +28,7 @@
                             count++;
                             <tr>
                                 <td>@count</td>
+                                <td><img src="~/Images/@item.ImageURL" style="height:50px; width:50px; border-radius:50%" /></td>
                                 <td>@item.Name @item.Surname</td>
                                 <td><a href="/Student/#/@item.StudentID" class="btn btn-outline-warning">Kurslar</a></td>
                                 <td><a href="/Student/DeleteStudent/@item.StudentID" class="btn btn-outline-danger">Sil</a></td>

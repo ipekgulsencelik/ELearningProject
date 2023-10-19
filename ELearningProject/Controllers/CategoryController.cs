@@ -12,8 +12,22 @@ namespace ELearningProject.Controllers
 
         public ActionResult Index()
         {
-            var values = context.Categories.ToList();
-            return View(values);
+            //string mail = Session["CurrentMail"].ToString();
+            if (!string.IsNullOrEmpty(Session["CurrentMail"].ToString()))
+            {
+                string mail = Session["CurrentMail"].ToString();
+                if (context.Admins.Where(x => x.Email == mail).Count() >= 0)
+                {
+                    var values = context.Categories.ToList();
+                    return View(values);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Error");
+                }
+            }
+
+            return RedirectToAction("Index", "Login");
         }
 
         [HttpGet]

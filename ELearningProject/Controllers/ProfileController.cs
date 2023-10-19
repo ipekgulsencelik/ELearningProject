@@ -116,8 +116,16 @@ namespace ELearningProject.Controllers
             value.Surname = student.Surname;
             value.Email = student.Email;
             value.PhoneNumber = student.PhoneNumber;
-            value.Password = student.Password;
-            value.ConfirmPassword = student.ConfirmPassword;
+            if (student.Password == null)
+            {
+                value.Password = value.Password;
+                value.ConfirmPassword = value.ConfirmPassword;
+            }
+            else
+            {
+                value.Password = student.Password;
+                value.ConfirmPassword = student.ConfirmPassword;
+            }
             context.SaveChanges();
             return RedirectToAction("LoginStudent", "Login");
         }

@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "GetReview";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+<h3>Ortalama Puan (@ViewBag.averageReviewScore)</h3>
+<div class="row">
+    <div class="col-md-3">
+        <br />
+        @for (var i = 1; i <= ViewBag.averageReviewScore; i++)
+        {
+            <span class="starGlowN"></span>
+        }
+        @for (var i = (ViewBag.averageReviewScore + 1); i <= 5; i++)
+        {
+            <span class="starFadeN"></span>
+        }
+    </div>
+</div>
+

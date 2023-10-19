@@ -1,5 +1,6 @@
 ﻿using ELearningProject.DAL.Context;
 using ELearningProject.DAL.Entities;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -22,8 +23,27 @@ namespace ELearningProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddStudent(Student student)
+        public ActionResult AddStudent(Student student, System.Web.HttpPostedFileBase image)
         {
+            string uniqueFileName = null;
+
+            if (image != null)
+            {
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                var path = "~/Images/" + uniqueFileName;
+                image.SaveAs(Server.MapPath(path));
+                student.ImageURL = uniqueFileName;
+            }
+
+            if (Request.Form["Status"] != null)
+            {
+                string status = Request.Form["Status"];
+            }
+            else
+            {
+                student.Status = false;
+            }
+
             context.Students.Add(student);
             context.SaveChanges();
             return RedirectToAction("Index");
@@ -45,13 +65,39 @@ namespace ELearningProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateStudent(Student student)
+        public ActionResult UpdateStudent(Student student, System.Web.HttpPostedFileBase image)
         {
             var value = context.Students.Find(student.StudentID);
+
+            string uniqueFileName = null;
+
+            if (image != null)
+            {
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                var path = "~/Images/" + uniqueFileName;
+                image.SaveAs(Server.MapPath(path));
+                student.ImageURL = uniqueFileName;
+                value.ImageURL = student.ImageURL;
+            }
+            else
+            {
+                value.ImageURL = value.ImageURL;
+            }
+
             value.Name = student.Name;
             value.Surname = student.Surname;
             value.Email = student.Email;
-            value.Password = student.Password;
+            value.PhoneNumber = student.PhoneNumber;
+            if (student.Password == null)
+            {
+                value.Password = value.Password;
+                value.ConfirmPassword = value.ConfirmPassword;
+            }
+            else
+            {
+                value.Password = student.Password;
+                value.ConfirmPassword = student.ConfirmPassword;
+            }
             context.SaveChanges();
             return RedirectToAction("Index");
         }

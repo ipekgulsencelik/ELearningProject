@@ -1,5 +1,6 @@
 ﻿using ELearningProject.DAL.Context;
 using ELearningProject.DAL.Entities;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Linq;
 using System.Web.Mvc;
@@ -52,8 +53,16 @@ namespace ELearningProject.Controllers
             admin.Surname = model.Surname;
             admin.Email = model.Email;
             admin.PhoneNumber = model.PhoneNumber;
-            admin.Password = model.Password;
-            admin.ConfirmPassword = model.ConfirmPassword;
+            if (model.Password == null)
+            {
+                admin.Password = admin.Password;
+                admin.ConfirmPassword = admin.ConfirmPassword;
+            }
+            else
+            {
+                admin.Password = model.Password;
+                admin.ConfirmPassword = model.ConfirmPassword;
+            }
             context.SaveChanges();
             return RedirectToAction("LoginAdmin", "Login");
         }
@@ -75,6 +84,14 @@ namespace ELearningProject.Controllers
 
         public PartialViewResult _NavbarPartial()
         {
+            string values = Session["CurrentMail"].ToString();
+            int id = context.Admins.Where(x => x.Email == values).Select(x => x.AdminID).FirstOrDefault();
+
+            var admin = context.Admins.Where(x => x.AdminID == id).FirstOrDefault();
+
+            ViewBag.image = admin.ImageURL;
+            ViewBag.name = admin.Name + " " + admin.Surname;
+
             return PartialView();
         }
 
